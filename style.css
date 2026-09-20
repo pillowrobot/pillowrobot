@@ -1,0 +1,470 @@
+/* =====================================================================
+   ربات بالشی — style.css
+   1. Variables   2. Base   3. Header   4. Buttons   5. Hero
+   6. Mascots & effects   7. Sections   8. About   9. Curriculum
+   10. Audience   11. Project (line follower)   12. Instructor
+   13. CTA   14. Footer   15. Reveal & motion   16. Responsive
+   ===================================================================== */
+
+/* ---------- 1. VARIABLES ---------- */
+:root{
+  --ink:#1f2430;
+  --paper:#fbf7ec;
+  --panel:#ffffff;
+  --line:#e6ded0;
+  --line-strong:#d8cdb8;
+  --muted:#6b6455;
+  --marigold:#f4a521;
+  --marigold-deep:#c98407;
+  --marigold-soft:#fff1d1;
+  --coral:#ee6a4c;
+  --coral-deep:#c24a2e;
+  --coral-soft:#fdeee0;
+  --indigo:#3c5691;
+  --indigo-deep:#293d6b;
+  --indigo-soft:#e7ecf7;
+  --sage:#6fa287;
+  --sage-deep:#4d7d64;
+  --sage-soft:#e5f0ea;
+  --dot:rgba(31,36,48,.07);
+  --radius-lg:32px;
+  --radius-md:22px;
+  --font-display:"Fredoka","Vazirmatn",sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#f1ede1;
+    --paper:#17181c;
+    --panel:#202127;
+    --line:#33343b;
+    --line-strong:#454651;
+    --muted:#b0aa9d;
+    --indigo-soft:#232a3c;
+    --sage-soft:#1c2b24;
+    --marigold-soft:#3a2f18;
+    --coral-soft:#3a2a1c;
+    --dot:rgba(241,237,225,.06);
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#f1ede1;
+  --paper:#17181c;
+  --panel:#202127;
+  --line:#33343b;
+  --line-strong:#454651;
+  --muted:#b0aa9d;
+  --indigo-soft:#232a3c;
+  --sage-soft:#1c2b24;
+  --marigold-soft:#3a2f18;
+  --coral-soft:#3a2a1c;
+  --dot:rgba(241,237,225,.06);
+}
+
+/* ---------- 2. BASE ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:"Vazirmatn",sans-serif;
+  background:var(--paper);
+  background-image:radial-gradient(var(--dot) 1.6px,transparent 1.6px);
+  background-size:28px 28px;
+  color:var(--ink);
+  line-height:1.9;
+  overflow-x:hidden;
+  transition:background-color .2s,color .2s;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+.wrap{width:min(1080px,calc(100% - 40px));margin:auto}
+.text-center{text-align:center}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:800}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:3px;border-radius:8px}
+:root[data-theme="dark"] :focus-visible{outline-color:var(--marigold)}
+
+/* ---------- 3. HEADER (floating pill) ---------- */
+header{position:sticky;top:0;z-index:50;padding:12px 0;pointer-events:none}
+.nav{
+  pointer-events:auto;
+  height:66px;padding-inline:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:color-mix(in srgb,var(--panel) 82%,transparent);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:2px solid var(--line);border-radius:999px;
+  box-shadow:0 12px 30px -16px rgba(31,36,48,.45);
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;flex:none}
+.brand-mark{
+  width:40px;height:40px;border-radius:14px;background:var(--marigold);
+  display:grid;place-items:center;font-size:21px;
+  box-shadow:0 4px 0 var(--marigold-deep);
+  transition:transform .3s var(--ease);
+}
+.brand:hover .brand-mark{transform:rotate(-10deg) scale(1.08)}
+.nav-links{display:flex;gap:4px;font-size:14.5px;font-weight:600;color:var(--muted)}
+.nav-links a{padding:6px 14px;border-radius:999px;transition:background-color .2s,color .2s}
+.nav-links a:hover{background:var(--marigold-soft);color:var(--ink)}
+.nav-links a.active{background:var(--marigold);color:#1f2430}
+.nav-right{display:flex;align-items:center;gap:12px;flex:none}
+.switcher{display:flex;align-items:center;gap:8px}
+.lang-group{display:flex;gap:2px;background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:3px}
+.lang-btn{
+  border:none;background:transparent;color:var(--muted);
+  font-size:12.5px;font-weight:800;padding:5px 10px;border-radius:999px;cursor:pointer;
+  transition:background-color .2s,color .2s,transform .15s;
+}
+.lang-btn:hover{color:var(--ink)}
+.lang-btn:active{transform:scale(.92)}
+.lang-btn.active{background:var(--ink);color:var(--paper)}
+.theme-btn{
+  width:38px;height:38px;border-radius:50%;background:var(--paper);border:2px solid var(--line);
+  display:grid;place-items:center;cursor:pointer;font-size:16px;flex:none;
+  transition:transform .3s var(--ease);
+}
+.theme-btn:hover{transform:rotate(25deg) scale(1.1)}
+@media (max-width:860px){.nav-links{display:none}}
+
+/* ---------- 4. BUTTONS (chunky, press-down) ---------- */
+.btn,.nav-cta{
+  --b:var(--marigold);--bd:var(--marigold-deep);--bt:#1f2430;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 28px;border:0;border-radius:999px;cursor:pointer;
+  background:var(--b);color:var(--bt);
+  font-weight:800;font-size:15.5px;line-height:1.4;white-space:nowrap;
+  box-shadow:0 5px 0 var(--bd),0 14px 20px -10px rgba(31,36,48,.45);
+  transition:transform .15s var(--ease),box-shadow .15s var(--ease),filter .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:hover,.nav-cta:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--bd),0 18px 24px -12px rgba(31,36,48,.5);filter:brightness(1.04)}
+.btn:active,.nav-cta:active{transform:translateY(4px);box-shadow:0 1px 0 var(--bd)}
+.btn-solid{--b:var(--marigold);--bd:var(--marigold-deep);--bt:#1f2430}
+.btn-ghost{--b:var(--panel);--bd:var(--line-strong);--bt:var(--ink);border:2px solid var(--line-strong)}
+.nav-cta{--b:var(--indigo);--bd:var(--indigo-deep);--bt:#fff;padding:9px 20px;font-size:14px}
+
+/* ---------- 5. HERO ---------- */
+.hero{padding:64px 0 130px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative}
+h1{font-size:clamp(2.3rem,5.4vw,4.1rem);line-height:1.35;letter-spacing:-.5px;margin-bottom:32px}
+h1 em{
+  font-style:normal;color:var(--coral);
+  text-decoration:none var(--marigold) 3px;text-underline-offset:.2em;text-decoration-skip-ink:none;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+.hero-art{position:relative;width:340px;height:380px;margin:0 auto;display:grid;place-items:center}
+.hero-art::before{
+  content:"";position:absolute;inset:-34px;border:3px dashed var(--coral);border-radius:50%;
+  opacity:.45;animation:spin 50s linear infinite;
+}
+.art-blob{
+  position:absolute;width:340px;height:340px;background:var(--marigold);
+  border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
+  animation:blobMorph 9s ease-in-out infinite;
+}
+.speech{
+  position:absolute;z-index:3;padding:8px 16px;border-radius:18px;
+  background:var(--panel);color:var(--ink);border:2px solid var(--ink);
+  box-shadow:0 4px 0 var(--ink);
+  font-size:13px;font-weight:700;text-align:center;white-space:nowrap;width:max-content;
+}
+.speech-2{background:var(--indigo);color:#fff}
+.speech-3{background:var(--sage);color:#1f2430}
+.speech-1,.speech-2,.speech-3{
+  top:50%;left:50%;margin-top:-18px;margin-left:-40px;
+  animation:circleRotate 14s linear infinite;
+}
+.speech-1{animation-delay:0s}
+.speech-2{animation-delay:-4.6s}
+.speech-3{animation-delay:-9.3s}
+.hero-art:hover .speech{animation-play-state:paused}   /* hover to read a bubble */
+
+/* ---------- 6. MASCOTS & EFFECTS ---------- */
+/* Every robot picture is a .moving-sticker (or .level-mascot img).
+   Swap the src in index.html any time; placement lives in the .pos-* classes below. */
+.moving-sticker{
+  position:absolute;z-index:3;width:clamp(144px,16.5vw,255px);height:auto;
+  mix-blend-mode:multiply;opacity:.95;
+  cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;
+  animation:stickerFloat 4.5s ease-in-out infinite;
+}
+:root[data-theme="dark"] .moving-sticker{mix-blend-mode:screen;opacity:.85;filter:drop-shadow(0 8px 12px rgba(0,0,0,.3))}
+.moving-sticker:nth-of-type(even){animation-duration:5.4s;animation-delay:-2s}
+
+.pos-hero-1{top:10%;right:2%;width:clamp(110px,13vw,180px)}
+.pos-hero-2{bottom:16%;left:2%;width:clamp(100px,11vw,160px);animation-delay:-2s}
+.pos-about-1{top:9%;left:2%}
+.pos-about-2{bottom:7%;right:2%}
+.pos-curr-1{top:3%;right:3%}
+.pos-proj-1{top:2%;left:3%}
+.pos-aud-1{bottom:calc(100% - 8px);inset-inline-start:36px;width:clamp(96px,10vw,140px)}
+.pos-cta-1{bottom:8%;left:5%;width:clamp(96px,12vw,170px)}
+.pos-cta-2{top:10%;right:5%;width:clamp(90px,10vw,140px)}
+.pos-inst-1{top:8%;left:4%}
+
+.floating-sticker{
+  position:fixed;bottom:22px;left:22px;width:118px;z-index:1000;
+  mix-blend-mode:multiply;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  animation:stickerFloat 3.5s ease-in-out infinite;
+}
+.floating-sticker img{width:100%;height:auto}
+:root[data-theme="dark"] .floating-sticker{mix-blend-mode:screen;filter:drop-shadow(0 10px 15px rgba(0,0,0,.4))}
+
+.robot-head-img{
+  width:100%;max-width:340px;height:auto;border-radius:28px;object-fit:cover;
+  position:relative;z-index:2;mix-blend-mode:normal;cursor:pointer;
+  animation:stickerFloat 4s ease-in-out infinite;
+}
+:root[data-theme="dark"] .robot-head-img{mix-blend-mode:screen}
+
+/* confetti (created by script.js when you tap a robot or a button) */
+.confetti{position:fixed;z-index:2000;width:10px;height:10px;pointer-events:none;border-radius:50%}
+.confetti.sq{border-radius:3px}
+.confetti.star{border-radius:0;clip-path:polygon(50% 0,62% 36%,100% 38%,70% 60%,80% 100%,50% 76%,20% 100%,30% 60%,0 38%,38% 36%)}
+
+/* ---------- 7. GENERIC SECTION ---------- */
+section{padding:88px 0}
+.kicker{
+  display:inline-block;padding:2px 16px;margin-bottom:14px;border-radius:999px;
+  background:var(--coral-soft);color:var(--coral-deep);font-weight:800;font-size:13.5px;
+}
+:root[data-theme="dark"] .kicker{color:var(--coral)}
+h2{font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.4;margin-bottom:14px}
+.lede{color:var(--muted);max-width:620px;font-size:16.5px}
+
+/* ---------- 8. ABOUT ---------- */
+.about{
+  background:var(--panel);border-block:2px solid var(--line);
+  border-radius:56px 56px 0 0;margin-top:-56px;z-index:2;
+}
+.about .kicker{display:table;margin-inline:auto}
+.about .lede{margin-inline:auto;text-align:center}
+.fact-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 30px;justify-content:center}
+.fact-chip{
+  background:var(--paper);border:2px solid var(--line);padding:9px 18px;border-radius:999px;
+  font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;cursor:default;
+  box-shadow:0 4px 0 var(--line);transition:transform .2s var(--ease);
+}
+.fact-chip:nth-child(1){background:var(--marigold-soft)}
+.fact-chip:nth-child(2){background:var(--sage-soft)}
+.fact-chip:nth-child(3){background:var(--coral-soft)}
+.fact-chip:hover{transform:translateY(-3px) rotate(-2deg)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;margin-top:10px}
+.about-card{
+  background:var(--paper);border:2px solid var(--line);border-radius:var(--radius-md);padding:28px;
+  box-shadow:0 6px 0 var(--line);transition:transform .25s var(--ease);
+}
+.about-card:hover{transform:translateY(-4px)}
+.about-card:nth-child(1){border-color:var(--marigold);box-shadow:0 6px 0 var(--marigold-deep)}
+.about-card:nth-child(2){border-color:var(--indigo);box-shadow:0 6px 0 var(--indigo-deep)}
+.about-card h3{font-size:17px;margin-bottom:10px}
+.about-card p{font-size:14.5px;color:var(--muted)}
+.source-line{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);padding-top:14px;margin-top:14px;border-top:2px dashed var(--line)}
+.source-line b{color:var(--ink)}
+
+/* ---------- 9. CURRICULUM ---------- */
+.curriculum{background:transparent}
+.levels{margin-top:84px;display:flex;flex-direction:column;gap:70px}
+
+.level{
+  --lvl:var(--marigold);--lvl-deep:var(--marigold-deep);--lvl-soft:var(--marigold-soft);
+  position:relative;background:var(--panel);
+  border:3px solid var(--lvl);border-radius:var(--radius-lg);
+  box-shadow:0 8px 0 var(--lvl-deep);
+  transition:transform .25s var(--ease);
+}
+.level:nth-of-type(2){--lvl:var(--sage);--lvl-deep:var(--sage-deep);--lvl-soft:var(--sage-soft)}
+.level:nth-of-type(3){--lvl:var(--coral);--lvl-deep:var(--coral-deep);--lvl-soft:var(--coral-soft)}
+.level-head{display:flex;gap:20px;align-items:center;padding:26px 30px;cursor:pointer;-webkit-user-select:none;user-select:none;border-radius:var(--radius-lg)}
+.level-head::after{
+  content:"";flex:none;width:12px;height:12px;margin-inline-start:4px;
+  border-right:3.5px solid var(--ink);border-bottom:3.5px solid var(--ink);
+  transform:rotate(45deg) translateY(-3px);transition:transform .35s var(--ease);
+}
+.level.active .level-head::after{transform:rotate(225deg) translateY(-3px)}
+.level-head:hover .level-num{transform:scale(1.1) rotate(-6deg)}
+.level-num{
+  flex:none;width:52px;height:52px;border-radius:18px;
+  background:var(--lvl);color:#1f2430;
+  display:grid;place-items:center;font-weight:800;font-size:19px;
+  box-shadow:0 4px 0 var(--lvl-deep);transition:transform .25s var(--ease);
+}
+.level.active .level-num{animation:badgePop .6s var(--ease)}
+.level-title{font-size:20px;font-weight:800;margin-bottom:2px}
+.level-sub{color:var(--muted);font-size:14px}
+.level-meta{
+  margin-inline-start:auto;flex:none;text-align:end;font-size:13px;font-weight:700;color:var(--ink);
+  white-space:nowrap;background:var(--lvl-soft);padding:4px 14px;border-radius:999px;
+}
+.level-body{
+  padding:0 30px;max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+  transition:max-height .6s var(--ease),opacity .35s,padding .35s,visibility .35s;
+}
+.level.active .level-body{max-height:3200px;opacity:1;visibility:visible;padding-bottom:30px}
+.level-desc{color:var(--muted);font-size:14.5px;max-width:640px;margin-bottom:22px}
+
+.unit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.unit{
+  background:var(--lvl-soft);border:2px solid transparent;border-radius:18px;padding:16px 18px;cursor:pointer;
+  transition:transform .2s var(--ease),border-color .2s,box-shadow .2s;
+}
+.unit:hover{transform:translateY(-4px) rotate(-1.2deg);border-color:var(--lvl);box-shadow:0 6px 0 var(--lvl)}
+.unit b{display:block;font-size:14.5px;margin-bottom:4px}
+.unit span{font-size:13px;color:var(--muted)}
+
+/* the robot that sits on top of each course card */
+.level-mascot{position:absolute;top:-64px;inset-inline-end:34px;width:96px;z-index:2;mix-blend-mode:multiply}
+.level-mascot img{
+  width:100%;height:auto;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  animation:stickerFloat 4s ease-in-out infinite;transform-origin:50% 100%;
+}
+.level:nth-of-type(2) .level-mascot img{animation-delay:-1.3s}
+.level:nth-of-type(3) .level-mascot img{animation-delay:-2.6s}
+.level.active .level-mascot{animation:mascotHello .8s var(--ease)}
+:root[data-theme="dark"] .level-mascot{mix-blend-mode:screen}
+
+/* ---------- 10. AUDIENCE ---------- */
+.audience{padding-top:140px}
+.audience-box{
+  position:relative;background:#1f2430;color:#fbf7ec;
+  border-radius:44px;padding:56px;
+  display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center;
+  box-shadow:0 10px 0 var(--marigold);
+}
+:root[data-theme="dark"] .audience-box{background:#292b35}
+.audience-box .kicker{background:rgba(244,165,33,.18);color:var(--marigold)}
+.audience-box p{color:#d8d2c3;max-width:520px}
+.facts{margin-top:22px;display:grid;gap:12px}
+.fact{display:flex;gap:12px;align-items:center;font-size:14.5px;font-weight:600}
+.check{width:26px;height:26px;border-radius:9px;background:var(--marigold);color:#1f2430;display:grid;place-items:center;font-size:13px;font-weight:800;flex:none}
+.age-box{
+  background:#fbf7ec;color:#1f2430;border-radius:28px;padding:30px;
+  transform:rotate(2deg);transition:transform .35s var(--ease);
+}
+.age-box:hover{transform:rotate(0) scale(1.03)}
+.age-label{color:#6b6455;font-size:13px;font-weight:600}
+.age-number{font-family:var(--font-display);font-size:60px;font-weight:800;margin:2px 0 14px;color:var(--coral);text-shadow:3px 3px 0 var(--marigold)}
+.age-line{border-top:2px dashed #e6ded0;padding-top:12px;margin-top:12px;font-size:13.5px;font-weight:600}
+
+/* ---------- 11. PROJECT — line follower ---------- */
+.project{position:relative}
+.project-box{
+  margin-top:44px;display:grid;grid-template-columns:1.05fr .95fr;
+  border-radius:44px;overflow:hidden;background:var(--indigo);color:#fff;
+  box-shadow:0 10px 0 var(--indigo-deep);
+}
+.project-image{position:relative;min-height:400px;background:#f8f1df}
+.lf-scene{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;-webkit-user-select:none;user-select:none}
+.lf-scene text{font-family:inherit}
+.lf-obstacle{cursor:grab}
+.lf-obstacle:active{cursor:grabbing}
+.lf-obstacle:focus-visible{outline:3px solid var(--indigo);outline-offset:4px}
+.lf-hint{transform-box:fill-box;transform-origin:center;animation:hintPulse 1.8s ease-in-out infinite}
+.lf-scene.touched .lf-hint{display:none}
+.lf-bot{cursor:pointer}
+.lf-bot:focus-visible{outline:3px solid var(--indigo);outline-offset:4px}
+.lf-waves,.lf-gl,.lf-gr{pointer-events:none}
+.lf-waves{opacity:0;transition:opacity .2s}
+.lf-blocked .lf-waves{opacity:1;animation:wavePulse .9s ease-in-out infinite}
+.project-content{padding:48px;display:flex;flex-direction:column;justify-content:center}
+.project-content h3{font-size:28px;margin-bottom:12px}
+.project-content p{color:#e4e9f7;margin-bottom:14px;font-size:14.5px}
+.tag{display:inline-block;width:fit-content;background:rgba(255,255,255,.18);padding:6px 16px;border-radius:999px;font-size:12.5px;font-weight:700;margin-bottom:16px}
+
+/* ---------- 12. INSTRUCTOR ---------- */
+.instructor{background:var(--panel);border-block:2px solid var(--line);position:relative}
+.instructor-grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:44px;align-items:center;margin-top:36px}
+.avatar{
+  width:100%;aspect-ratio:1/1;border-radius:var(--radius-lg);background:var(--indigo);
+  border:4px solid var(--ink);box-shadow:8px 8px 0 var(--marigold);
+  display:grid;place-items:center;font-size:64px;color:var(--paper);
+  transition:transform .3s var(--ease);
+}
+.avatar:hover{transform:rotate(-3deg) scale(1.03)}
+.instructor-bio p{color:var(--muted);font-size:15px;margin-bottom:14px;max-width:620px}
+.instructor-name{font-size:24px;font-weight:800;margin-bottom:4px}
+.instructor-role{color:var(--coral-deep);font-weight:700;font-size:14.5px;margin-bottom:18px}
+:root[data-theme="dark"] .instructor-role{color:var(--coral)}
+.cred-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.cred-chip{background:var(--indigo-soft);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:700;transition:transform .2s var(--ease)}
+.cred-chip:hover{transform:translateY(-3px) rotate(-2deg)}
+
+/* ---------- 13. CTA ---------- */
+.cta{text-align:center;padding:60px 0 110px}
+.cta .wrap{
+  position:relative;padding:80px 28px;border-radius:48px;
+  background:var(--marigold-soft);border:3px solid var(--marigold);box-shadow:0 10px 0 var(--marigold-deep);
+}
+.cta h2{max-width:640px;margin:0 auto 14px;position:relative;z-index:2}
+.cta p{color:var(--muted);max-width:520px;margin:0 auto 30px;position:relative;z-index:2}
+.cta .btn{position:relative;z-index:2}
+.cta .btn-solid{--b:var(--indigo);--bd:var(--indigo-deep);--bt:#fff}
+
+/* ---------- 14. FOOTER ---------- */
+footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-size:13px;font-weight:600}
+.footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* ---------- 15. REVEAL & MOTION ---------- */
+.js .reveal{opacity:0;transform:translateY(28px) scale(.97);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+@keyframes stickerFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(4deg)}}
+@keyframes circleRotate{from{transform:rotate(0) translate(200px) rotate(0)}to{transform:rotate(360deg) translate(200px) rotate(-360deg)}}
+@keyframes blobMorph{
+  0%,100%{border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;transform:rotate(-6deg)}
+  50%{border-radius:56% 44% 46% 54% / 54% 56% 44% 46%;transform:rotate(6deg)}
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes badgePop{0%{transform:scale(1)}40%{transform:scale(1.35) rotate(-10deg)}100%{transform:scale(1)}}
+@keyframes mascotHello{0%{transform:translateY(0)}35%{transform:translateY(-26px) rotate(-8deg)}70%{transform:translateY(0) rotate(4deg)}100%{transform:none}}
+@keyframes hintPulse{0%,100%{transform:scale(.9);opacity:.9}50%{transform:scale(1.15);opacity:.3}}
+@keyframes wavePulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  /* no orbit: the three speech bubbles sit still around the robot */
+  .speech-1,.speech-2,.speech-3{margin:0;transform:none}
+  .speech-1{top:2%;left:-14%}
+  .speech-2{top:46%;left:auto;right:-18%}
+  .speech-3{top:auto;bottom:2%;left:-8%}
+}
+
+/* ---------- 16. RESPONSIVE ---------- */
+@media (max-width:900px){
+  .hero{padding:36px 0 110px}
+  .hero-grid{grid-template-columns:1fr;gap:70px}
+  .hero-art{height:auto;display:flex;flex-direction:column;align-items:center}
+  .hero-art::before,.art-blob{display:none}
+  .speech-1,.speech-2,.speech-3{position:static;animation:none;transform:none;margin:0 0 10px;white-space:normal}
+  .robot-head-img{max-width:280px}
+  .about-grid,.audience-box,.project-box,.instructor-grid{grid-template-columns:1fr}
+  .audience-box{padding:36px 28px}
+  .project-image{min-height:0;aspect-ratio:600/480}
+  .project-content{padding:32px 28px}
+  .instructor-grid .avatar{max-width:220px;margin:0 auto}
+  /* mascots become soft background decoration on small screens */
+  .moving-sticker{width:84px;opacity:.6;pointer-events:none}
+  .pos-aud-1{opacity:.95;pointer-events:auto}
+  .pos-hero-1{top:auto;bottom:14px;right:5%}
+  .pos-hero-2{bottom:14px;left:5%}
+  .pos-curr-1,.pos-about-1,.pos-about-2,.pos-proj-1,.pos-inst-1{display:none}   /* keep phones uncluttered */
+  .floating-sticker{width:80px;bottom:14px;left:14px}
+}
+@media (max-width:760px){
+  .unit-grid{grid-template-columns:1fr}
+  .level-head{flex-wrap:wrap;padding:24px 20px}
+  .level-meta{margin-inline-start:0}
+  .level-body{padding-inline:20px}
+  .level-mascot{width:78px;top:-52px;inset-inline-end:20px}
+  .cta .wrap{padding:60px 20px}
+}
+@media (max-width:520px){
+  .brand{font-size:0;gap:0}         /* keep the logo mark, hide the name on tiny screens */
+  .nav{gap:8px;padding-inline:10px}
+  .nav-right,.switcher{gap:6px}
+  .nav-cta{padding:8px 14px;font-size:13px}
+  .lang-btn{padding:5px 8px}
+}

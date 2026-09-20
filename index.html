@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ربات بالشی | دوره رباتیک و برنامه‌نویسی کودکان</title>
+
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- استیکر شناور ثابت در گوشه صفحه -->
+<!-- <div class="floating-sticker">
+  <img src="assets/pillowBot_student.jpg" alt="ربات بالشی">
+</div> -->
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand"><span class="brand-mark"></span>ربات بالشی</a>
+    <nav class="nav-links">
+      <a href="#about" data-i18n="nav_about">درباره دوره</a>
+      <a href="#curriculum" data-i18n="nav_curriculum">برنامه دوره</a>
+      <a href="#project" data-i18n="nav_project">نمونه پروژه</a>
+      <a href="instructor.html" data-i18n="nav_instructor">درباره من</a>
+    </nav>
+    <div class="nav-right">
+      <div class="switcher">
+        <div class="lang-group" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="fa" onclick="setLang('fa')">فا</button>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+        </div>
+        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+      </div>
+      <a href="#register" class="nav-cta" data-i18n="nav_cta">ثبت‌نام</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="position: relative;">
+    <!-- استیکرهای پس‌زمینه در بخش هیرو -->
+    <img src="assets/pillowBot_chef.jpg" alt="ربات" class="moving-sticker pos-hero-1" data-depth="16" draggable="false">
+    <img src="assets/pillowBot_doctor.jpg" alt="ربات" class="moving-sticker pos-hero-2" data-depth="24" draggable="false">
+
+    <div class="wrap hero-grid">
+      <div>
+        <h1 data-i18n="hero_h1">ساختن آینده با کدنویسی، رباتیک و هوش مصنوعی</h1>
+        <div class="hero-actions">
+          <a href="#register" class="btn btn-solid" data-i18n="btn_register">ثبت‌نام در دوره</a>
+          <a href="#curriculum" class="btn btn-ghost" data-i18n="btn_curriculum">دیدن برنامه دوره</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="art-blob" data-depth="-10"></div>
+          <div class="speech speech-1" data-i18n="speech_1">سلام! من ربات بالشی ام 👋</div>
+          <div class="speech speech-2" data-i18n="speech_2">بیا با کمک ربات بالشی یه ربات بسازیم!</div>
+          <div class="speech speech-3" data-i18n="speech_3">بیا کدهای باحال بنویسیم!</div>
+        <!-- جایگزینی ربات متنی با عکس واقعی -->
+        <img src="assets/pillowBot.png" alt="ربات بالشی" class="robot-head-img" data-depth="12" draggable="false">
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / SOURCES -->
+  <section class="about" id="about" style="position: relative;">
+    <!-- استیکرهای پس‌زمینه در بخش درباره -->
+    <img src="assets/pillowBot_majic.jpg" alt="ربات" class="moving-sticker pos-about-1" data-depth="14" draggable="false">
+    <img src="assets/pillowBot_nasa.jpg" alt="ربات" class="moving-sticker pos-about-2" data-depth="-14" draggable="false">
+
+    <div class="wrap">
+      <div class="kicker" data-i18n="about_kicker">درباره دوره</div>
+      <h2 data-i18n="about_h2" class="text-center">یادگیری قدم‌به‌قدم، از بازی تا کدنویسی واقعی</h2>
+      <p class="lede" data-i18n="about_lede">
+        دوره در سه ترم پشت‌سرهم طراحی شده و هر ترم روی مهارت‌های ترم قبل بنا می‌شود؛ بچه‌ها بدون این‌که حس کنند دارند «درس» می‌خوانند، مفاهیم اصلی علوم کامپیوتر را از دل بازی و ساختن یاد می‌گیرند.
+      </p>
+      <div class="fact-row">
+        <div class="fact-chip" data-i18n="fact1">👦 سن ۶ تا ۱۰ سال</div>
+        <div class="fact-chip" data-i18n="fact2">⏱ جلسات ۶۰ دقیقه‌ای</div>
+        <div class="fact-chip" data-i18n="fact3">🧩 بدون نیاز به تجربه قبلی</div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <h3 data-i18n="card1_title">گروه کوچک، توجه بیشتر</h3>
+          <p data-i18n="card1_p">هر گروه فقط ۵ کودک است تا هر بچه در طول جلسه واقعاً دست‌به‌کار شود، نه فقط تماشا کند.</p>
+        </div>
+        <div class="about-card reveal">
+          <h3 data-i18n="card2_title">منبع و الهام‌بخش دوره</h3>
+          <p data-i18n="card2_p">
+            ترم اول این دوره بر پایه‌ی کتاب <b>«سلام روبی: ماجراجویی در دنیای کدنویسی»</b>
+            نوشته‌ی <b>لیندا لیوکاس</b> طراحی شده؛ رویکردی بدون کامپیوتر برای آموزش
+            تفکر محاسباتی از طریق داستان و بازی.
+          </p>
+          <!-- <div class="source-line">
+            <span>📖</span>
+            <span data-i18n="source_line">ترم‌های بعدی بر پایه‌ی محیط بصری <b>اسکرچ</b> و ربات آموزشی <b>mBot</b> ادامه پیدا می‌کنند.</span>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="curriculum" id="curriculum" style="position: relative;">
+    <!-- استیکر پس‌زمینه در بخش برنامه دوره -->
+    <img src="assets/pillowBot_pirate.jpg" alt="ربات" class="moving-sticker pos-curr-1" data-depth="18" draggable="false">
+
+    <div class="wrap">
+      <div class="kicker" data-i18n="curriculum_kicker">برنامه دوره</div>
+      <h2 data-i18n="curriculum_h2">سه ترم، سه دنیای ماجراجویی</h2>
+      <p class="lede" data-i18n="curriculum_lede">هر ترم یه دنیای جدیده که روبی می‌بره بچه‌ها توش. روی هر مرحله بزنید تا ماموریت‌هاش رو ببینید.</p>
+
+      <div class="levels">
+        <div class="level active">
+        <!-- ربات این دوره: فقط src را عوض کن (فعلاً عکس تکراری است) -->
+        <div class="level-mascot"><img src="assets/pillowBot_student.jpg" alt="" draggable="false"></div>
+          <div class="level-head" onclick="this.parentElement.classList.toggle('active')">
+            <div class="level-num">۱</div>
+            <div>
+              <div class="level-title" data-i18n="level1_title">🧵 دنیای سلام روبی — بدون کامپیوتر</div>
+              <div class="level-sub" data-i18n="level1_sub">یه ماجراجویی با داستان، حرکت و بازی گروهی</div>
+            </div>
+            <div class="level-meta" data-i18n="level1_meta">۱۲ جلسه · ۶۰ دقیقه</div>
+          </div>
+          <div class="level-body">
+            <p class="level-desc" data-i18n="level1_desc">
+              بدون این‌که حتی یه کامپیوتر لمس کنن، بچه‌ها با قصه، بازی و حرکت توی کلاس،
+              مثل یه کاراگاه رمزها رو کشف می‌کنن و برای دنیای بعدی آماده می‌شن.
+            </p>
+            <div class="unit-grid">
+              <div class="unit"><b data-i18n="l1u1b"></b><span data-i18n="l1u1s"></span></div>
+              <div class="unit"><b data-i18n="l1u2b"></b><span data-i18n="l1u2s"></span></div>
+              <div class="unit"><b data-i18n="l1u3b"></b><span data-i18n="l1u3s"></span></div>
+              <div class="unit"><b data-i18n="l1u4b"></b><span data-i18n="l1u4s"></span></div>
+              <div class="unit"><b data-i18n="l1u5b"></b><span data-i18n="l1u5s"></span></div>
+              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
+              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
+              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
+              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
+              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s">
+                
+              </span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="level">
+        <!-- ربات این دوره: فقط src را عوض کن (فعلاً عکس تکراری است) -->
+        <div class="level-mascot"><img src="assets/pillowBot_chef_pizza.jpg" alt="" draggable="false"></div>
+          <div class="level-head" onclick="this.parentElement.classList.toggle('active')">
+            <div class="level-num">۲</div>
+            <div>
+              <div class="level-title" data-i18n="level2_title">🎮 دنیای اسکرچ — اولین کد روی صفحه</div>
+              <div class="level-sub" data-i18n="level2_sub">شخصیت‌های رنگی که با کد شما زنده می‌شن</div>
+            </div>
+            <div class="level-meta" data-i18n="level2_meta">به‌زودی</div>
+          </div>
+          <div class="level-body">
+            <p class="level-desc" data-i18n="level2_desc">
+              همون چیزایی که بدون کامپیوتر یاد گرفتن، این‌بار با کشیدن و چیدن قطعه‌های
+              رنگی، به حرکت، صدا و بازی روی صفحه تبدیل می‌شه.
+            </p>
+            <div class="unit-grid">
+              <div class="unit"><b data-i18n="l2u1b"></b><span data-i18n="l2u1s"></span></div>
+              <div class="unit"><b data-i18n="l2u2b"></b><span data-i18n="l2u2s"></span></div>
+              <div class="unit"><b data-i18n="l2u3b"></b><span data-i18n="l2u3s"></span></div>
+              <div class="unit"><b data-i18n="l2u4b"></b><span data-i18n="l2u4s"></span></div>
+              <div class="unit"><b data-i18n="l2u5b"></b><span data-i18n="l2u5s"></span></div>
+              <div class="unit"><b data-i18n="l2u6b"></b><span data-i18n="l2u6s"></span></div>
+              <div class="unit"><b data-i18n="l2u7b"></b><span data-i18n="l2u7s"></span></div>
+              <div class="unit"><b data-i18n="l2u8b"></b><span data-i18n="l2u8s"></span></div>
+              <div class="unit"><b data-i18n="l2u9b"></b><span data-i18n="l2u9s"></span></div>
+              <div class="unit"><b data-i18n="l2u10b"></b><span data-i18n="l2u10s"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="level">
+        <!-- ربات این دوره: فقط src را عوض کن (فعلاً عکس تکراری است) -->
+        <div class="level-mascot"><img src="assets/pillowBot_rider.jpg" alt="" draggable="false"></div>
+          <div class="level-head" onclick="this.parentElement.classList.toggle('active')">
+            <div class="level-num">۳</div>
+            <div>
+              <div class="level-title" data-i18n="level3_title">🤖 دنیای mBot — ربات واقعی</div>
+              <div class="level-sub" data-i18n="level3_sub">کدی که این‌بار واقعاً حرکت می‌کنه!</div>
+            </div>
+            <div class="level-meta" data-i18n="level3_meta">به‌زودی</div>
+          </div>
+          <div class="level-body">
+            <p class="level-desc" data-i18n="level3_desc">
+              کدی که تا این‌جا روی صفحه نوشتن، حالا یه ربات واقعی رو حرکت می‌ده؛ با
+              سنسور و موتور، رفتار ربات خودشون رو طراحی می‌کنن.
+            </p>
+            <div class="unit-grid">
+              <div class="unit"><b data-i18n="l3u1b"></b><span data-i18n="l3u1s"></span></div>
+              <div class="unit"><b data-i18n="l3u2b"></b><span data-i18n="l3u2s"></span></div>
+              <div class="unit"><b data-i18n="l3u3b"></b><span data-i18n="l3u3s"></span></div>
+              <div class="unit"><b data-i18n="l3u4b"></b><span data-i18n="l3u4s"></span></div>
+              <div class="unit"><b data-i18n="l3u5b"></b><span data-i18n="l3u5s"></span></div>
+              <div class="unit"><b data-i18n="l3u6b"></b><span data-i18n="l3u6s"></span></div>
+              <div class="unit"><b data-i18n="l3u7b"></b><span data-i18n="l3u7s"></span></div>
+              <div class="unit"><b data-i18n="l3u8b"></b><span data-i18n="l3u8s"></span></div>
+              <div class="unit"><b data-i18n="l3u9b"></b><span data-i18n="l3u9s"></span></div>
+              <div class="unit"><b data-i18n="l3u10b"></b><span data-i18n="l310s"></span></div>
+              <div class="unit"><b data-i18n="l3u11b"></b><span data-i18n="l3u11s"></span></div>
+              <div class="unit"><b data-i18n="l3u12b"></b><span data-i18n="l3u12s"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section class="project" id="project">
+    <img src="assets/pillowBot_teacher.jpg" alt="" class="moving-sticker pos-proj-1" data-depth="16" draggable="false">
+    <div class="wrap">
+      <div class="kicker" data-i18n="project_kicker">یک نمونه فعالیت</div>
+      <h2 data-i18n="project_h2">فقط یاد نمی‌گیرند؛ می‌سازند</h2>
+
+      <div class="project-box reveal">
+        <div class="project-image">
+          <!-- ربات خط‌دنبال‌کن: ربات مسیر مشکی را دنبال می‌کند؛ مانع را بکش و روی مسیر بگذار تا ربات بایستد. روی ربات بزن تا بایستد/برود. -->
+          <svg id="lfScene" class="lf-scene" viewBox="0 0 600 480" aria-hidden="true">
+            <defs>
+              <pattern id="lfDots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="1.8" fill="#e6d9b8"/></pattern>
+            </defs>
+            <rect width="600" height="480" fill="#f8f1df"/>
+            <rect width="600" height="480" fill="url(#lfDots)"/>
+            <circle cx="70" cy="70" r="12" fill="#6fa287" opacity=".55"/>
+            <circle cx="548" cy="52" r="8" fill="#ee6a4c" opacity=".55"/>
+            <circle cx="40" cy="430" r="9" fill="#f4a521" opacity=".7"/>
+            <circle cx="560" cy="380" r="13" fill="#3c5691" opacity=".35"/>
+            <!-- مسیر (نوار مشکی) -->
+            <path id="lfPath" d="M120 240 C120 140 210 90 300 120 C380 146 400 90 470 110 C540 130 550 230 500 290 C450 350 380 320 330 350 C280 380 250 430 180 400 C120 375 120 300 120 240 Z"
+                  fill="none" stroke="#1f2430" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- خط شروع -->
+            <g transform="translate(96 244)" fill="#1f2430">
+              <rect x="0" y="0" width="12" height="8" fill="#fff"/><rect x="12" y="0" width="12" height="8"/><rect x="24" y="0" width="12" height="8" fill="#fff"/><rect x="36" y="0" width="12" height="8"/>
+              <rect x="0" y="8" width="12" height="8"/><rect x="12" y="8" width="12" height="8" fill="#fff"/><rect x="24" y="8" width="12" height="8"/><rect x="36" y="8" width="12" height="8" fill="#fff"/>
+            </g>
+            <!-- ربات -->
+            <g id="lfBot" class="lf-bot" tabindex="0">
+              <circle class="lf-gl" cx="27" cy="-12" r="15" fill="#ffd84d" opacity="0"/>
+              <circle class="lf-gr" cx="27" cy="12" r="15" fill="#ffd84d" opacity="0"/>
+              <g class="lf-waves" fill="none" stroke="#ee6a4c" stroke-width="4" stroke-linecap="round">
+                <path d="M50 -10 A14 14 0 0 1 50 10"/><path d="M60 -18 A26 26 0 0 1 60 18"/><path d="M70 -26 A38 38 0 0 1 70 26"/>
+              </g>
+              <g fill="#1f2430">
+                <rect x="-26" y="-26" width="20" height="9" rx="4"/><rect x="-26" y="17" width="20" height="9" rx="4"/>
+                <rect x="6" y="-26" width="20" height="9" rx="4"/><rect x="6" y="17" width="20" height="9" rx="4"/>
+              </g>
+              <rect x="-34" y="-19" width="72" height="38" rx="14" fill="#ee6a4c" stroke="#1f2430" stroke-width="3"/>
+              <rect x="-24" y="-11" width="30" height="22" rx="7" fill="#f4a521"/>
+              <circle class="lf-led" cx="-9" cy="0" r="5.5" fill="#4bb543" stroke="#1f2430" stroke-width="2"/>
+              <circle cx="27" cy="-12" r="7.5" fill="#fff" stroke="#1f2430" stroke-width="2.5"/><circle cx="29" cy="-12" r="3.5" fill="#1f2430"/>
+              <circle cx="27" cy="12" r="7.5" fill="#fff" stroke="#1f2430" stroke-width="2.5"/><circle cx="29" cy="12" r="3.5" fill="#1f2430"/>
+            </g>
+            <!-- مانع (قابل کشیدن) -->
+            <g id="lfObstacle" class="lf-obstacle" tabindex="0" transform="translate(500 425)">
+              <circle class="lf-hint" r="38" fill="none" stroke="#ee6a4c" stroke-width="4" stroke-dasharray="7 7"/>
+              <rect x="-22" y="-22" width="44" height="44" rx="10" fill="#f4a521" stroke="#1f2430" stroke-width="3.5"/>
+              <path d="M-22 -2 L-2 -22 M-22 18 L18 -22 M-2 22 L22 -2" stroke="#1f2430" stroke-width="4" stroke-linecap="round" opacity=".85"/>
+            </g>
+          </svg>
+        </div>
+        <div class="project-content">
+          <span class="tag" data-i18n="project_tag">فعالیت ترم سوم</span>
+          <h3 data-i18n="project_title">🚗 ماشین هوشمند</h3>
+          <p data-i18n="project_p1">
+            بچه‌ها یک ربات چرخ‌دار می‌سازند و با کمک سنسور و برنامه‌نویسی به آن یاد
+            می‌دهند مسیر را تشخیص دهد، حرکت کند و به موانع واکنش نشان دهد.
+          </p>
+          <p data-i18n="project_p2">در این پروژه با موتور، سنسور، منطق برنامه‌نویسی و آزمون‌وخطا به‌شکل عملی کار می‌کنند.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="audience">
+    <div class="wrap">
+      <div class="audience-box reveal">
+        <img src="assets/pillowBot_traveler.jpg" alt="" class="moving-sticker pos-aud-1" draggable="false">
+        <div>
+          <div class="kicker" data-i18n="audience_kicker">این دوره برای کیه؟</div>
+          <h2 data-i18n="audience_h2">برای بچه‌هایی که دوست دارن بفهمن «چطور کار می‌کنه؟»</h2>
+          <p data-i18n="audience_p">لازم نیست قبلاً ربات ساخته باشند یا برنامه‌نویسی بلد باشند. از صفر شروع می‌کنیم و قدم‌به‌قدم جلو می‌رویم.</p>
+          <div class="facts">
+            <div class="fact"><span class="check">✓</span><span data-i18n="aud_fact1">مناسب برای ۶ تا ۱۰ سال</span></div>
+            <div class="fact"><span class="check">✓</span><span data-i18n="aud_fact2">بدون نیاز به تجربه قبلی</span></div>
+            <div class="fact"><span class="check">✓</span><span data-i18n="aud_fact3">گروه‌های کوچک، حداکثر ۵ نفر</span></div>
+            <div class="fact"><span class="check">✓</span><span data-i18n="aud_fact4">یادگیری پروژه‌محور</span></div>
+          </div>
+        </div>
+        <!-- <img src="assets/pillowBot_traveler.jpg" alt="" class="moving-sticker pos-aud-1" draggable="false"> -->
+        <!-- <div class="age-box">
+          <div class="age-label" data-i18n="age_label">سن مناسب</div>
+          <div class="age-number" data-i18n="age_number">۶–۱۰</div>
+          <div class="age-line" data-i18n="age_line1">سطح: مقدماتی</div>
+          <div class="age-line" data-i18n="age_line2">پیش‌نیاز: ندارد</div>
+        </div> -->
+        <img src="assets/pillowBot.png" alt="ربات بالشی" class="robot-head-img" data-depth="12" draggable="false">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="register">
+    <div class="wrap reveal">
+      <img src="assets/pillowBot_enginner.jpg" alt="" class="moving-sticker pos-cta-1" draggable="false">
+      <img src="assets/pillowBot_painter.jpg" alt="" class="moving-sticker pos-cta-2" draggable="false">
+      <h2 data-i18n="cta_h2">آماده‌ای اولین رباتت رو بسازی؟ 🤖</h2>
+      <p data-i18n="cta_p">برای اطلاع از زمان برگزاری، ظرفیت و نحوه ثبت‌نام با ما در تماس باش.</p>
+      <a href="https://t.me/Pill0wman" class="btn btn-solid" onclick="window.location.href='https://t.me/Pill0wman'; return false;">اطلاعات و ثبت‌نام</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span data-i18n="footer_copy">© ۲۰۲۶ ربات بالشی</span>
+    <span data-i18n="footer_tag">ساختن، بهترین راه یاد گرفتنه.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

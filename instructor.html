@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>درباره من | ربات بالشی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="brand"><span class="brand-mark">🤖</span>ربات بالشی</a>
+    <nav class="nav-links">
+      <a href="index.html#about" data-i18n="nav_about">درباره دوره</a>
+      <a href="index.html#curriculum" data-i18n="nav_curriculum">برنامه دوره</a>
+      <a href="index.html#project" data-i18n="nav_project">نمونه پروژه</a>
+      <a href="instructor.html" data-i18n="nav_instructor" style="color: var(--ink); font-weight: 700;">درباره من</a>
+    </nav>
+    <div class="nav-right">
+      <div class="switcher">
+        <div class="lang-group" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="fa" onclick="setLang('fa')">فا</button>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
+        </div>
+        <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+      </div>
+      <a href="index.html#register" class="nav-cta" data-i18n="nav_cta">ثبت‌نام</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="instructor" style="border-top: none;">
+    <img src="assets/pillowBot_rider.jpg" alt="" class="moving-sticker pos-inst-1" draggable="false">
+    <div class="wrap">
+      <div class="kicker" data-i18n="instructor_kicker">درباره من</div>
+      <h2 data-i18n="instructor_h2">مربی این دوره کیه؟</h2>
+      <p class="lede" data-i18n="instructor_lede">قبل از این‌که ربات با بچه‌ها آشنا بشه، بد نیست بدونید کی این دوره رو طراحی کرده.</p>
+
+      <div class="instructor-grid">
+        <div class="avatar">👨‍💻</div>
+        <div class="instructor-bio">
+          <div class="instructor-name" data-i18n="instructor_name">امید</div>
+          <div class="instructor-role" data-i18n="instructor_role">مهندس نرم‌افزار رباتیک و هوش مصنوعی، MakrShakr</div>
+          <p data-i18n="instructor_p1">
+          </p>
+          <p data-i18n="instructor_p2">
+          </p>
+          <div class="cred-row">
+            <span class="cred-chip" data-i18n="chip1">🤖 مهندس رباتیک و هوش مصنوعی</span>
+            <span class="cred-chip" data-i18n="chip2">🎓 کارشناسی‌ارشد داده و مهندسی</span>
+            <span class="cred-chip" data-i18n="chip3">🍸 توسعه‌دهنده‌ی ربات‌های بارمن</span>
+          </div>
+          <div style="margin-top: 30px;">
+            <a href="index.html" class="btn btn-solid">بازگشت به صفحه اصلی</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span data-i18n="footer_copy">© ۲۰۲۶ سلام روبی</span>
+    <span data-i18n="footer_tag">ساختن، بهترین راه یاد گرفتنه.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
