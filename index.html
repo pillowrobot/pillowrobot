@@ -16,42 +16,45 @@
 
 <!-- استیکر شناور ثابت در گوشه صفحه -->
 <!-- <div class="floating-sticker">
-  <img src="assets/pillowBot_student.jpg" alt="ربات بالشی">
+  <img src="assets/pillowBot_student.png" alt="ربات بالشی">
 </div> -->
 
 <header>
   <div class="wrap nav">
     <a href="#" class="brand"><span class="brand-mark"></span>ربات بالشی</a>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#about" data-i18n="nav_about">درباره دوره</a>
       <a href="#curriculum" data-i18n="nav_curriculum">برنامه دوره</a>
       <a href="#project" data-i18n="nav_project">نمونه پروژه</a>
+      <a href="#support" data-i18n="nav_support">پشتیبانی</a>
       <a href="instructor.html" data-i18n="nav_instructor">درباره من</a>
     </nav>
     <div class="nav-right">
-      <div class="switcher">
+      <!-- <div class="switcher">
         <div class="lang-group" role="group" aria-label="Language">
           <button class="lang-btn" data-lang="fa" onclick="setLang('fa')">فا</button>
           <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
           <button class="lang-btn" data-lang="it" onclick="setLang('it')">IT</button>
         </div>
         <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
-      </div>
+      </div> -->
       <a href="#register" class="nav-cta" data-i18n="nav_cta">ثبت‌نام</a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks"><i></i><i></i><i></i><span class="sr-only" data-i18n="nav_menu">منو</span></button>
     </div>
   </div>
 </header>
+
 
 <main>
   <!-- HERO -->
   <section class="hero" style="position: relative;">
     <!-- استیکرهای پس‌زمینه در بخش هیرو -->
-    <img src="assets/pillowBot_chef.jpg" alt="ربات" class="moving-sticker pos-hero-1" data-depth="16" draggable="false">
-    <img src="assets/pillowBot_doctor.jpg" alt="ربات" class="moving-sticker pos-hero-2" data-depth="24" draggable="false">
+    <!-- <img src="assets/pillowBot_chef.png" alt="ربات" class="moving-sticker pos-hero-1" data-depth="16" draggable="false"> -->
+    <!-- <img src="assets/pillowBot_doctor.png" alt="ربات" class="moving-sticker pos-hero-2" data-depth="24" draggable="false"> -->
 
     <div class="wrap hero-grid">
       <div>
-        <h1 data-i18n="hero_h1">ساختن آینده با کدنویسی، رباتیک و هوش مصنوعی</h1>
+        <h1 data-i18n="hero_h1">کودکان خلاق و کنکجاو با کدنویسی، رباتیک و هوش مصنوعی</h1>
         <div class="hero-actions">
           <a href="#register" class="btn btn-solid" data-i18n="btn_register">ثبت‌نام در دوره</a>
           <a href="#curriculum" class="btn btn-ghost" data-i18n="btn_curriculum">دیدن برنامه دوره</a>
@@ -61,8 +64,8 @@
       <div class="hero-art">
         <div class="art-blob" data-depth="-10"></div>
           <div class="speech speech-1" data-i18n="speech_1">سلام! من ربات بالشی ام 👋</div>
-          <div class="speech speech-2" data-i18n="speech_2">بیا با کمک ربات بالشی یه ربات بسازیم!</div>
-          <div class="speech speech-3" data-i18n="speech_3">بیا کدهای باحال بنویسیم!</div>
+          <div class="speech speech-2" data-i18n="speech_2">بیا با کمک من یه ربات بسازیم!</div>
+          <div class="speech speech-3" data-i18n="speech_3">بیا با هم کدهای باحال بنویسیم!</div>
         <!-- جایگزینی ربات متنی با عکس واقعی -->
         <img src="assets/pillowBot.png" alt="ربات بالشی" class="robot-head-img" data-depth="12" draggable="false">
       </div>
@@ -72,8 +75,9 @@
   <!-- ABOUT / SOURCES -->
   <section class="about" id="about" style="position: relative;">
     <!-- استیکرهای پس‌زمینه در بخش درباره -->
-    <img src="assets/pillowBot_majic.jpg" alt="ربات" class="moving-sticker pos-about-1" data-depth="14" draggable="false">
-    <img src="assets/pillowBot_nasa.jpg" alt="ربات" class="moving-sticker pos-about-2" data-depth="-14" draggable="false">
+    <!-- <img src="assets/pillowBot_majic.png" alt="ربات" class="moving-sticker pos-about-1" data-depth="14" draggable="false"> -->
+     <img src="assets/pillowBot_majic.png" alt="ربات" class="moving-sticker pos-about-1" data-depth="14" draggable="false" style="width: 450px; top: 130px; left: 80px;">
+    <!-- <img src="assets/pillowBot_nasa.png" alt="ربات" class="moving-sticker pos-about-2" data-depth="-14" draggable="false"> -->
 
     <div class="wrap">
       <div class="kicker" data-i18n="about_kicker">درباره دوره</div>
@@ -108,20 +112,187 @@
     </div>
   </section>
 
+<!-- ROADMAP -->
+  <section class="roadmap-section" id="roadmap">
+    <div class="wrap">
+      <div class="kicker" data-i18n="rm_kicker">مسیر یادگیری</div>
+      <h2 data-i18n="rm_h2">نقشه راه دوره </h2>
+      <p class="lede" data-i18n="rm_lede">از اولین قصه تا ساختن یک ربات واقعی، قدم‌به‌قدم و با ماجراجویی.</p>
+      <div class="rm-legend">
+        <span class="rm-chip t1" data-i18n="rm_t1">ترم ۱ · تفکر محاسابی</span>
+        <span class="rm-chip t2" data-i18n="rm_t2">ترم ۲ · برنامه نویسی</span>
+        <span class="rm-chip t3" data-i18n="rm_t3">ترم ۳ · رباتیک</span>
+      </div>
+    </div>
+
+    <div class="rm-frame">
+      <div class="rm-scroll">
+        <div class="rm-stage">
+          <svg class="rm-svg" viewBox="0 0 1400 640" aria-hidden="true">
+            <defs>
+              <linearGradient id="zone1Sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color:var(--rm-sky-a)"/><stop offset="1" style="stop-color:var(--rm-sky-b)"/>
+              </linearGradient>
+              <linearGradient id="zone2Sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#bfe6f7"/><stop offset=".55" stop-color="#5fabde"/><stop offset="1" stop-color="#215f9e"/>
+              </linearGradient>
+              <linearGradient id="zone3Sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#241454"/><stop offset="1" stop-color="#07091c"/>
+              </linearGradient>
+              <linearGradient id="rmSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#4a86ee"/><stop offset="1" stop-color="#2f62d0"/>
+              </linearGradient>
+            </defs>
+
+            <!-- three worlds, side by side: term 1 = road, term 2 = sea, term 3 = space -->
+            <rect x="0" y="0" width="470" height="640" fill="url(#zone1Sky)"/>
+            <rect x="470" y="0" width="440" height="640" fill="url(#zone2Sky)"/>
+            <rect x="910" y="0" width="490" height="640" fill="url(#zone3Sky)"/>
+
+            <!-- ===== world 1 — by road (term 1) ===== -->
+            <circle class="rm-sun" cx="150" cy="92" r="46"/>
+            <g class="rm-cloud"><ellipse cx="70" cy="70" rx="46" ry="16"/><ellipse cx="52" cy="60" rx="20" ry="16"/></g>
+            <g class="rm-cloud"><ellipse cx="330" cy="112" rx="58" ry="19"/><ellipse cx="300" cy="98" rx="27" ry="21"/><ellipse cx="350" cy="92" rx="24" ry="19"/></g>
+            <g class="rm-hill">
+              <path class="h1" d="M30 560 L122 424 Q140 400 158 424 L250 560Z"/>
+              <path class="h2" d="M140 400 Q158 424 158 424 L250 560 L162 560 L140 450Z"/>
+              <path class="h1" d="M330 560 L392 470 Q405 452 418 470 L470 560Z"/>
+              <path class="h2" d="M405 452 Q418 470 418 470 L470 560 L423 560 L405 480Z"/>
+            </g>
+            <path class="rm-road-edge" d="M-20 170 H190 C265 170 265 450 340 450 H470"/>
+            <path class="rm-road" d="M-20 170 H190 C265 170 265 450 340 450 H470"/>
+            <path class="rm-road-dash" id="road1" d="M-20 170 H190 C265 170 265 450 340 450 H470"/>
+
+            <!-- ===== world 2 — by sea (term 2) ===== -->
+            <path class="rm-ocean" d="M470 250 Q600 210 700 250 T910 236 V640 H470Z"/>
+            <path class="rm-ocean-line" d="M470 250 Q600 210 700 250 T910 236"/>
+            <path class="rm-ocean-line soft" d="M470 320 Q600 288 700 320 T910 308"/>
+            <g class="rm-island">
+              <ellipse cx="558" cy="410" rx="36" ry="11"/>
+              <rect x="555" y="366" width="5" height="34" rx="2"/>
+              <path d="M558 366 Q532 356 522 376 Q542 370 558 366Z"/>
+              <path d="M558 366 Q586 354 598 372 Q574 368 558 366Z"/>
+            </g>
+            <g class="rm-island small">
+              <ellipse cx="838" cy="378" rx="25" ry="8"/>
+              <rect x="836" y="346" width="4" height="26" rx="2"/>
+              <path d="M838 346 Q818 338 810 353 Q826 349 838 346Z"/>
+            </g>
+            <path class="rm-road-edge" d="M470 450 C545 450 545 170 620 170 H760 C835 170 835 450 910 450"/>
+            <path class="rm-sea-lane" d="M470 450 C545 450 545 170 620 170 H760 C835 170 835 450 910 450"/>
+            <path class="rm-sea-dash" id="road2" d="M470 450 C545 450 545 170 620 170 H760 C835 170 835 450 910 450"/>
+
+            <!-- ===== world 3 — in space (term 3) ===== -->
+            <g class="rm-stars"><circle cx="1074.0" cy="64.7" r="2.4"/><circle cx="958.3" cy="153.3" r="1.9"/><circle cx="951.7" cy="146.7" r="1.4"/><circle cx="1124.5" cy="46.1" r="1.5"/><circle cx="1120.3" cy="220.2" r="1.5"/><circle cx="1027.7" cy="174.3" r="2.9"/><circle cx="1190.5" cy="121.2" r="3.0"/><circle cx="946.4" cy="227.4" r="1.8"/><circle cx="991.4" cy="57.1" r="1.8"/><circle cx="1300.4" cy="71.6" r="2.3"/><circle cx="1218.9" cy="115.7" r="2.2"/><circle cx="953.9" cy="43.7" r="1.7"/><circle cx="1238.0" cy="128.3" r="1.8"/><circle cx="1194.4" cy="134.2" r="1.8"/><circle cx="1290.4" cy="190.8" r="1.7"/><circle cx="1189.2" cy="150.8" r="2.8"/><circle cx="1260.5" cy="96.2" r="3.0"/><circle cx="979.3" cy="126.2" r="2.6"/><circle cx="994.9" cy="142.5" r="1.4"/><circle cx="1232.4" cy="205.9" r="2.3"/><circle cx="1327.7" cy="102.2" r="2.5"/><circle cx="1198.4" cy="163.4" r="2.1"/></g>
+            <circle class="rm-planet" cx="1120" cy="118" r="30"/>
+            <ellipse class="rm-planet-ring" cx="1120" cy="118" rx="54" ry="13"/>
+            <circle class="rm-moon" cx="1340" cy="86" r="24"/>
+            <circle class="rm-moon-crater" cx="1330" cy="78" r="4.5"/>
+            <circle class="rm-moon-crater" cx="1349" cy="94" r="3.5"/>
+            <path class="rm-trail" id="road3" d="M910 450 H1040 C1115 450 1115 170 1190 170 H1372"/>
+
+            <!-- soft dashed dividers where one world meets the next -->
+            <line class="rm-zone-divider" x1="470" y1="0" x2="470" y2="640"/>
+            <line class="rm-zone-divider" x1="910" y1="0" x2="910" y2="640"/>
+
+            <!-- shoreline: only under the road and sea worlds -->
+            <path d="M0 566 Q175 540 350 562 T700 560 Q810 561 910 552 V640 H0Z" fill="url(#rmSea)"/>
+            <path d="M0 566 Q175 540 350 562 T700 560 Q810 561 910 552" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+          </svg>
+
+          <div class="rm-stop t1 flat-high" style="--x:6.79;--y:26.56;--i:1" role="button" tabindex="0" aria-pressed="false">
+            <img class="rm-mascot" src="assets/pillowBot_taxi.png" alt="" draggable="false">
+            <div class="rm-pin"><span>1</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s1">🗺️ نقشه‌ی قدم‌ها</div> -->
+          </div>
+          <div class="rm-stop t1 down below" style="--x:18.93;--y:48.44;--i:2" role="button" tabindex="0" aria-pressed="false">
+            <!-- <img class="rm-mascot" src="assets/pillowBot_pirate.png" alt="" draggable="false"> -->
+            <div class="rm-pin"><span>2</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s2">🔍 شکارچی الگو</div> -->
+          </div>
+          <div class="rm-stop t1 flat-low" style="--x:28.93;--y:70.31;--i:3" role="button" tabindex="0" aria-pressed="false">
+            <!-- <img class="rm-mascot" src="assets/pillowBot_doctor.png" alt="" draggable="false"> -->
+            <div class="rm-pin"><span>3</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s3">🐞 شکار باگ</div> -->
+          </div>
+          <div class="rm-stop t2 up" style="--x:38.93;--y:48.44;--i:4" role="button" tabindex="0" aria-pressed="false">
+            <!-- <img class="rm-mascot" src="assets/pillowBot_painter.png" alt="" draggable="false"> -->
+            <div class="rm-pin"><span>4</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s4">🎮 سلام اسکرچ</div> -->
+          </div>
+          <div class="rm-stop t2 flat-high" style="--x:49.29;--y:26.56;--i:5" role="button" tabindex="0" aria-pressed="false">
+            <img class="rm-mascot" src="assets/pillowBot_pirate.png" alt="" draggable="false">
+            <div class="rm-pin"><span>5</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s5">🚀 بازی فضایی</div> -->
+          </div>
+          <div class="rm-stop t2 down" style="--x:59.64;--y:48.44;--i:6" role="button" tabindex="0" aria-pressed="false">
+            <!-- <img class="rm-mascot" src="assets/pillowBot_majic.png" alt="" draggable="false"> -->
+            <div class="rm-pin"><span>6</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s6">🎬 جشنواره انیمیشن</div> -->
+          </div>
+          <div class="rm-stop t3 flat-low" style="--x:69.64;--y:70.31;--i:7" role="button" tabindex="0" aria-pressed="false">
+            <!-- <img class="rm-mascot" src="assets/pillowBot_student.png" alt="" draggable="false"> -->
+            <div class="rm-pin"><span>7</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s7">🤖 سلام ربات</div> -->
+          </div>
+          <div class="rm-stop t3 up below" style="--x:79.64;--y:48.44;--i:8" role="button" tabindex="0" aria-pressed="false">
+            <img class="rm-mascot" src="assets/pillowBot_nasa.png" alt="" draggable="false">
+            <div class="rm-pin"><span>8</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s8">👀 چشم‌های ربات</div> -->
+          </div>
+          <div class="rm-stop t3 flat-high" style="--x:91.43;--y:26.56;--i:9" role="button" tabindex="0" aria-pressed="false">
+            <!-- <img class="rm-mascot" src="assets/pillowBot_rider.png" alt="" draggable="false"> -->
+            <div class="rm-pin"><span>9</span></div>
+            <!-- <div class="rm-label" data-i18n="rm_s9">🚗 ماشین هوشمند</div> -->
+          </div>
+
+          <div class="rm-finish" style="--x:98.00;--y:26.56">
+            <div class="rm-flag"></div>
+            <!-- <div class="rm-label" data-i18n="rm_finish">🏁 خط پایان</div> -->
+          </div>
+
+          <!-- ربات مسافر: روی جاده به ایستگاه انتخاب‌شده می‌رود -->
+          <div class="rm-rider" id="rmRider" style="--x:6.79;--y:26.56" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+      <p class="rm-hint" data-i18n="rm_hint">↔ برای دیدن کل مسیر بکشید</p>
+
+      <!-- کارت توضیح ایستگاه انتخاب‌شده (با JS پر می‌شود) -->
+      <div class="rm-panel" id="rmPanel" aria-live="polite">
+        <img class="rm-panel-img" id="rmPanelImg" alt="" draggable="false">
+        <div class="rm-panel-body">
+          <span class="rm-chip" id="rmPanelTerm"></span>
+          <h3 id="rmPanelTitle"></h3>
+          <p id="rmPanelDesc"></p>
+        </div>
+        <div class="rm-panel-ctrl">
+          <span class="rm-count" id="rmCount"></span>
+          <button type="button" class="rm-panel-link" id="rmPanelLink" data-i18n="rm_more"></button>
+          <div class="rm-btns">
+            <button type="button" class="btn btn-ghost rm-btn" id="rmPrev" data-i18n="rm_prev">قبلی</button>
+            <button type="button" class="btn btn-ghost rm-btn" id="rmPlay"></button>
+            <button type="button" class="btn btn-solid rm-btn" id="rmNext" data-i18n="rm_next">بعدی</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CURRICULUM -->
   <section class="curriculum" id="curriculum" style="position: relative;">
     <!-- استیکر پس‌زمینه در بخش برنامه دوره -->
-    <img src="assets/pillowBot_pirate.jpg" alt="ربات" class="moving-sticker pos-curr-1" data-depth="18" draggable="false">
+    <!-- <img src="assets/pillowBot_student.png" alt="ربات" class="moving-sticker pos-curr-1" data-depth="18" draggable="false"> -->
+    <img src="assets/pillowBot_student.png" alt="ربات" class="moving-sticker pos-curr-1" data-depth="18" draggable="false" style="width: 430px; top: 50px; right: 850px;">
 
     <div class="wrap">
       <div class="kicker" data-i18n="curriculum_kicker">برنامه دوره</div>
       <h2 data-i18n="curriculum_h2">سه ترم، سه دنیای ماجراجویی</h2>
       <p class="lede" data-i18n="curriculum_lede">هر ترم یه دنیای جدیده که روبی می‌بره بچه‌ها توش. روی هر مرحله بزنید تا ماموریت‌هاش رو ببینید.</p>
 
-      <div class="levels">
-        <div class="level active">
+      <div class="levels" id="curriculum-levels">
+        <div class="level active" id="level1">
         <!-- ربات این دوره: فقط src را عوض کن (فعلاً عکس تکراری است) -->
-        <div class="level-mascot"><img src="assets/pillowBot_student.jpg" alt="" draggable="false"></div>
+        <!-- <div class="level-mascot"><img src="assets/pillowBot_taxi.png" alt="" draggable="false"></div> -->
           <div class="level-head" onclick="this.parentElement.classList.toggle('active')">
             <div class="level-num">۱</div>
             <div>
@@ -142,19 +313,17 @@
               <div class="unit"><b data-i18n="l1u4b"></b><span data-i18n="l1u4s"></span></div>
               <div class="unit"><b data-i18n="l1u5b"></b><span data-i18n="l1u5s"></span></div>
               <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
-              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
-              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
-              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s"></span></div>
-              <div class="unit"><b data-i18n="l1u6b"></b><span data-i18n="l1u6s">
-                
-              </span></div>
+              <div class="unit unit-empty"><b data-i18n="l1u7b"></b><span data-i18n="l1u7s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l1u8b"></b><span data-i18n="l1u8s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l1u9b"></b><span data-i18n="l1u9s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l1u10b"></b><span data-i18n="l1u10s"></span></div>
             </div>
           </div>
         </div>
 
-        <div class="level">
+        <div class="level" id="level2">
         <!-- ربات این دوره: فقط src را عوض کن (فعلاً عکس تکراری است) -->
-        <div class="level-mascot"><img src="assets/pillowBot_chef_pizza.jpg" alt="" draggable="false"></div>
+        <!-- <div class="level-mascot"><img src="assets/pillowBot_pirate.png" alt="" draggable="false"></div> -->
           <div class="level-head" onclick="this.parentElement.classList.toggle('active')">
             <div class="level-num">۲</div>
             <div>
@@ -183,13 +352,13 @@
           </div>
         </div>
 
-        <div class="level">
+        <div class="level" id="level3">
         <!-- ربات این دوره: فقط src را عوض کن (فعلاً عکس تکراری است) -->
-        <div class="level-mascot"><img src="assets/pillowBot_rider.jpg" alt="" draggable="false"></div>
+        <div class="level-mascot"></div>
           <div class="level-head" onclick="this.parentElement.classList.toggle('active')">
             <div class="level-num">۳</div>
             <div>
-              <div class="level-title" data-i18n="level3_title">🤖 دنیای mBot — ربات واقعی</div>
+              <div class="level-title" data-i18n="level3_title">🤖 دنیای تجربه — ربات واقعی</div>
               <div class="level-sub" data-i18n="level3_sub">کدی که این‌بار واقعاً حرکت می‌کنه!</div>
             </div>
             <div class="level-meta" data-i18n="level3_meta">به‌زودی</div>
@@ -204,14 +373,14 @@
               <div class="unit"><b data-i18n="l3u2b"></b><span data-i18n="l3u2s"></span></div>
               <div class="unit"><b data-i18n="l3u3b"></b><span data-i18n="l3u3s"></span></div>
               <div class="unit"><b data-i18n="l3u4b"></b><span data-i18n="l3u4s"></span></div>
-              <div class="unit"><b data-i18n="l3u5b"></b><span data-i18n="l3u5s"></span></div>
-              <div class="unit"><b data-i18n="l3u6b"></b><span data-i18n="l3u6s"></span></div>
-              <div class="unit"><b data-i18n="l3u7b"></b><span data-i18n="l3u7s"></span></div>
-              <div class="unit"><b data-i18n="l3u8b"></b><span data-i18n="l3u8s"></span></div>
-              <div class="unit"><b data-i18n="l3u9b"></b><span data-i18n="l3u9s"></span></div>
-              <div class="unit"><b data-i18n="l3u10b"></b><span data-i18n="l310s"></span></div>
-              <div class="unit"><b data-i18n="l3u11b"></b><span data-i18n="l3u11s"></span></div>
-              <div class="unit"><b data-i18n="l3u12b"></b><span data-i18n="l3u12s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u5b"></b><span data-i18n="l3u5s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u6b"></b><span data-i18n="l3u6s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u7b"></b><span data-i18n="l3u7s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u8b"></b><span data-i18n="l3u8s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u9b"></b><span data-i18n="l3u9s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u10b"></b><span data-i18n="l3u10s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u11b"></b><span data-i18n="l3u11s"></span></div>
+              <div class="unit unit-empty"><b data-i18n="l3u12b"></b><span data-i18n="l3u12s"></span></div>
             </div>
           </div>
         </div>
@@ -221,7 +390,7 @@
 
   <!-- PROJECT -->
   <section class="project" id="project">
-    <img src="assets/pillowBot_teacher.jpg" alt="" class="moving-sticker pos-proj-1" data-depth="16" draggable="false">
+    <img src="assets/pillowBot_programmer.png" alt="" class="moving-sticker pos-proj-1" data-depth="16" draggable="false" style="width: 430px; top: 190px; right: 90px;">
     <div class="wrap">
       <div class="kicker" data-i18n="project_kicker">یک نمونه فعالیت</div>
       <h2 data-i18n="project_h2">فقط یاد نمی‌گیرند؛ می‌سازند</h2>
@@ -285,11 +454,46 @@
     </div>
   </section>
 
+  <!-- CLASS CORNER: photo / video slots -->
+  <section class="gallery-section" id="gallery">
+    <div class="wrap">
+      <div class="kicker" data-i18n="gal_kicker">گوشه‌ی کلاس</div>
+      <h2 data-i18n="gal_h2">ببینید بچه‌ها چطور می‌سازن</h2>
+      <p class="lede" data-i18n="gal_lede">عکس و ویدیوهایی از کلاس و کار بچه‌ها.</p>
+      <!-- برای پر کردن هر قاب، کل <div class="slot-ph">…</div> را با یکی از این‌ها عوض کن:
+           عکس:  <img src="assets/class1.png" alt="توضیح عکس" loading="lazy">
+           ویدیو: <video controls playsinline preload="metadata" poster="assets/class-poster.png"><source src="assets/class1.mp4" type="video/mp4"></video>
+           (فقط با رضایت والدین از بچه‌ها عکس/فیلم بگذار) -->
+      <div class="gallery">
+        <figure class="slot slot-main reveal">
+          <div class="slot-ph"><span>🎥</span><b data-i18n="gal_video">ویدیوی کلاس</b><small data-i18n="gal_soon">به‌زودی</small></div>
+        </figure>
+        <figure class="slot reveal">
+          <div class="slot-ph"><span>📷</span><b data-i18n="gal_photo1">عکس کلاس</b><small data-i18n="gal_soon">به‌زودی</small></div>
+        </figure>
+        <figure class="slot reveal">
+          <div class="slot-ph"><span>🤖</span><b data-i18n="gal_photo2">پروژه‌ی بچه‌ها</b><small data-i18n="gal_soon">به‌زودی</small></div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- AUDIENCE -->
   <section class="audience">
     <div class="wrap">
       <div class="audience-box reveal">
-        <img src="assets/pillowBot_traveler.jpg" alt="" class="moving-sticker pos-aud-1" draggable="false">
+        <img src="assets/pillowBot_nurse.png" alt="" class="moving-sticker pos-aud-1" draggable="false"style="position: absolute; top: -100px; right: -50px; width: 120px; z-index: 10;" >
+        <img src="assets/pillowBot_traveler.png" alt="" class="moving-sticker" draggable="false" style="position: absolute; top: -100px; right: 50px; width: 120px; z-index: 10;">
+        <img src="assets/pillowBot_chef.png" alt="" class="moving-sticker" draggable="false" style="position: absolute; top: -100px; right: 150px; width: 120px; z-index: 10;">
+        <img src="assets/pillowBot_teacher.png" alt="" class="moving-sticker pos-aud-1" draggable="false" style="position: absolute; top: -100px; right: 250px; width: 120px; z-index: 10;">
+        <img src="assets/pillowBot_police.png" alt="" class="moving-sticker pos-aud-1" draggable="false" style="position: absolute; top: -100px; right: 350px; width: 120px; z-index: 10;">
+        <img src="assets/pillowBot_painter.png" alt="" class="moving-sticker pos-aud-1" draggable="false" style="position: absolute; top: -100px; right: 450px; width: 120px; z-index: 10;">
+        <img src="assets/pillowBot_dentist.png" alt="" class="moving-sticker pos-aud-1" draggable="false"style="position: absolute; top: -100px; right: 550px; width: 120px; z-index: 10;" >
+        <img src="assets/pillowBot_majic.png" alt="" class="moving-sticker pos-aud-1" draggable="false"style="position: absolute; top: -100px; right: 650px; width: 120px; z-index: 10;" >
+        <img src="assets/pillowBot_cimist.png" alt="" class="moving-sticker pos-aud-1" draggable="false"style="position: absolute; top: -100px; right: 750px; width: 120px; z-index: 10;" >
+        <img src="assets/pillowBot_chef_pizza.png" alt="" class="moving-sticker pos-aud-1" draggable="false"style="position: absolute; top: -100px; right: 850px; width: 120px; z-index: 10;" >
+        <img src="assets/pillowBot_doctor.jpg" alt="" class="moving-sticker pos-aud-1" draggable="false"style="position: absolute; top: -100px; right: 950px; width: 120px; z-index: 10;" >
+        <img src="assets/pillowBot_enginner.png" alt="" class="moving-sticker pos-aud-1" draggable="false"style="position: absolute; top: -100px; right: 1050px; width: 120px; z-index: 10;" >
         <div>
           <div class="kicker" data-i18n="audience_kicker">این دوره برای کیه؟</div>
           <h2 data-i18n="audience_h2">برای بچه‌هایی که دوست دارن بفهمن «چطور کار می‌کنه؟»</h2>
@@ -301,7 +505,7 @@
             <div class="fact"><span class="check">✓</span><span data-i18n="aud_fact4">یادگیری پروژه‌محور</span></div>
           </div>
         </div>
-        <!-- <img src="assets/pillowBot_traveler.jpg" alt="" class="moving-sticker pos-aud-1" draggable="false"> -->
+        <!-- <img src="assets/pillowBot_traveler.png" alt="" class="moving-sticker pos-aud-1" draggable="false"> -->
         <!-- <div class="age-box">
           <div class="age-label" data-i18n="age_label">سن مناسب</div>
           <div class="age-number" data-i18n="age_number">۶–۱۰</div>
@@ -313,13 +517,45 @@
     </div>
   </section>
 
+  <!-- SUPPORT -->
+  <section class="support" id="support" style="position: relative;">
+    <img src="assets/pillowBot_gangester.png" alt="" class="moving-sticker pos-sup-1" data-depth="14" draggable="false" style="width: 430px; top: 50px; right: 1350px;">
+    <div class="wrap">
+      <div class="kicker" data-i18n="sup_kicker">پشتیبانی</div>
+      <h2 data-i18n="sup_h2">هر سؤالی داشتید، بپرسید</h2>
+      <p class="lede" data-i18n="sup_lede">قبل و بعد از ثبت‌نام، برای هر چیزی که درباره‌ی دوره می‌خواید بدونید، پیام بدید.</p>
+      <div class="support-grid">
+        <div class="support-card reveal">
+          <div class="support-ico">📅</div>
+          <h3 data-i18n="sup1_t">ثبت‌نام و زمان‌بندی</h3>
+          <p data-i18n="sup1_p">برای اطلاع از زمان برگزاری، ظرفیت گروه‌ها و نحوه‌ی ثبت‌نام پیام بدید.</p>
+        </div>
+        <div class="support-card reveal">
+          <div class="support-ico">👦👧</div>
+          <h3 data-i18n="sup2_t">جلسه آشنایی رایگان</h3>
+          <p data-i18n="sup2_p">میتونین برای آشنایی و جلسه مشاره رایگان با ما در ارتباط باشین</p>
+        </div>
+        <div class="support-card reveal">
+          <div class="support-ico">🗺️</div>
+          <h3 data-i18n="sup3_t">برنامه‌ی ترم‌ها</h3>
+          <p data-i18n="sup3_p">درباره‌ی موضوع جلسه‌ها و مسیر سه‌ترمی هر سؤالی دارید بپرسید.</p>
+        </div>
+      </div>
+      <div class="support-cta">
+        <a href="https://t.me/Pill0wman" class="btn btn-solid" target="_blank" rel="noopener" data-i18n="sup_btn">ارتباط با من</a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta" id="register">
     <div class="wrap reveal">
-      <img src="assets/pillowBot_enginner.jpg" alt="" class="moving-sticker pos-cta-1" draggable="false">
-      <img src="assets/pillowBot_painter.jpg" alt="" class="moving-sticker pos-cta-2" draggable="false">
-      <h2 data-i18n="cta_h2">آماده‌ای اولین رباتت رو بسازی؟ 🤖</h2>
-      <p data-i18n="cta_p">برای اطلاع از زمان برگزاری، ظرفیت و نحوه ثبت‌نام با ما در تماس باش.</p>
+      <img src="assets/pillowBot_detective.png" alt="" class="moving-sticker pos-cta-1" draggable="false" style="width: 430px; top: 60px; right: -50px;">
+      <!-- <img src="assets/pillowBot_painter.png" alt="" class="moving-sticker pos-cta-2" draggable="false"> -->
+      <h2 data-i18n="cta_h2">آماده‌ای اولین رباتت رو بسازی؟</h2>
+      <!-- <p data-i18n="cta_p">برای اطلاع از زمان برگزاری، ظرفیت و نحوه ثبت‌نام با ما در تماس باش.</p> -->
+      <p></p>
+      <p></p>
       <a href="https://t.me/Pill0wman" class="btn btn-solid" onclick="window.location.href='https://t.me/Pill0wman'; return false;">اطلاعات و ثبت‌نام</a>
     </div>
   </section>

@@ -103,8 +103,8 @@ header{position:sticky;top:0;z-index:50;padding:12px 0;pointer-events:none}
   transition:transform .3s var(--ease);
 }
 .brand:hover .brand-mark{transform:rotate(-10deg) scale(1.08)}
-.nav-links{display:flex;gap:4px;font-size:14.5px;font-weight:600;color:var(--muted)}
-.nav-links a{padding:6px 14px;border-radius:999px;transition:background-color .2s,color .2s}
+.nav-links{display:flex;gap:2px;font-size:13.5px;font-weight:600;color:var(--muted);white-space:nowrap}
+.nav-links a{padding:6px 11px;border-radius:999px;transition:background-color .2s,color .2s}
 .nav-links a:hover{background:var(--marigold-soft);color:var(--ink)}
 .nav-links a.active{background:var(--marigold);color:#1f2430}
 .nav-right{display:flex;align-items:center;gap:12px;flex:none}
@@ -124,7 +124,26 @@ header{position:sticky;top:0;z-index:50;padding:12px 0;pointer-events:none}
   transition:transform .3s var(--ease);
 }
 .theme-btn:hover{transform:rotate(25deg) scale(1.1)}
-@media (max-width:860px){.nav-links{display:none}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.menu-btn{
+  display:none;flex:none;width:38px;height:38px;border:2px solid var(--line);border-radius:50%;
+  background:var(--paper);cursor:pointer;place-items:center;
+}
+.menu-btn i{display:block;width:16px;height:2px;background:var(--ink);border-radius:2px;margin:3px auto;transition:transform .25s var(--ease),opacity .2s}
+.nav.menu-open .menu-btn i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.nav.menu-open .menu-btn i:nth-child(2){opacity:0}
+.nav.menu-open .menu-btn i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+@media (max-width:1080px){
+  .nav-links{
+    display:flex;position:absolute;top:calc(100% + 10px);inset-inline:14px;flex-direction:column;gap:2px;
+    background:var(--panel);border:2px solid var(--line);border-radius:22px;padding:10px;
+    box-shadow:0 16px 30px -14px rgba(31,36,48,.35);
+    opacity:0;visibility:hidden;translate:0 -8px;transition:opacity .2s,translate .25s var(--ease),visibility .25s;
+  }
+  .nav-links a{padding:10px 14px;text-align:center}
+  .nav.menu-open .nav-links{opacity:1;visibility:visible;translate:0 0}
+  .menu-btn{display:grid}
+}
 
 /* ---------- 4. BUTTONS (chunky, press-down) ---------- */
 .btn,.nav-cta{
@@ -143,8 +162,65 @@ header{position:sticky;top:0;z-index:50;padding:12px 0;pointer-events:none}
 .btn-ghost{--b:var(--panel);--bd:var(--line-strong);--bt:var(--ink);border:2px solid var(--line-strong)}
 .nav-cta{--b:var(--indigo);--bd:var(--indigo-deep);--bt:#fff;padding:9px 20px;font-size:14px}
 
+
+/* استایل پایه برای منوی کشویی در موبایل */
+@media (max-width: 768px) {
+  /* پنهان کردن منو در حالت عادی روی موبایل */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -280px; /* در حالت بسته بیرون از صفحه */
+    width: 260px;
+    height: 100vh;
+    background-color: var(--bg-color, #fff); /* هماهنگ با تم سایت */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px 20px 20px;
+    gap: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+  }
+
+  /* وقتی منو باز می‌شود (کلاس active اضافه می‌شود) */
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* لایه پس‌زمینه نیمه‌شفاف هنگام باز شدن منو */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* استایل دکمه همبرگری وقتی منو باز است (اختیاری برای تغییر شکل آیکون) */
+  .menu-btn[aria-expanded="true"] i:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-btn[aria-expanded="true"] i:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-btn[aria-expanded="true"] i:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+
 /* ---------- 5. HERO ---------- */
-.hero{padding:64px 0 130px}
+/* .hero{padding:64px 0 130px}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative}
 h1{font-size:clamp(2.3rem,5.4vw,4.1rem);line-height:1.35;letter-spacing:-.5px;margin-bottom:32px}
 h1 em{
@@ -178,7 +254,98 @@ h1 em{
 .speech-1{animation-delay:0s}
 .speech-2{animation-delay:-4.6s}
 .speech-3{animation-delay:-9.3s}
-.hero-art:hover .speech{animation-play-state:paused}   /* hover to read a bubble */
+.hero-art:hover .speech{animation-play-state:paused}   hover to read a bubble */
+
+
+/* ---------- 5. HERO ---------- */
+.hero{padding:64px 0 130px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative}
+h1{font-size:clamp(2.3rem,5.4vw,4.1rem);line-height:1.35;letter-spacing:-.5px;margin-bottom:32px}
+h1 em{
+  font-style:normal;color:var(--coral);
+  text-decoration:none var(--marigold) 3px;text-underline-offset:.2em;text-decoration-skip-ink:none;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+/* کانتینر اصلی ربات (بزرگ و مربع برای حفظ تقارن دایره) */
+.hero-art{
+  position: relative;
+  width: 540px;
+  height: 540px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+}
+
+/* دایره خط‌چین */
+.hero-art::before{
+  content: "";
+  position: absolute;
+  inset: -20px; /* شعاع خط‌چین */
+  border: 3px dashed var(--coral);
+  border-radius: 50%;
+  opacity: .45;
+  animation: spin 50s linear infinite;
+  pointer-events: none;
+}
+
+/* شکل پس‌زمینه نارنجی (حالت مورف و ارگانیک اصلی) */
+.art-blob{
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  background: var(--marigold);
+  /* بازگرداندن دقیق مقادیر حالت مورف */
+  border-radius: 44% 56% 52% 48% / 48% 44% 56% 52%;
+  animation: blobMorph 9s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* استایل حباب‌های متن */
+.speech{
+  position: absolute;
+  z-index: 3;
+  padding: 8px 16px;
+  border-radius: 18px;
+  background: var(--panel);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 0 4px 0 var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.speech-2{background: var(--indigo); color: #fff;}
+.speech-3{background: var(--sage); color: #1f2430;}
+
+/* اصلاح مسیر چرخش حباب‌ها روی خط‌چین 
+   (عدد 230px نشان‌دهنده شعاع فاصله از مرکز است که متن‌ها را دقیقاً روی خط‌چین می‌اندازد) */
+.speech-1, .speech-2, .speech-3{
+  top: 50%;
+  left: 50%;
+  margin-top: -18px;
+  margin-left: -40px;
+  animation: circleRotate 14s linear infinite;
+}
+
+/* اگر انیمیشن اصلی شما نیاز به تنظیم فاصله دارد، با transform روی محور X آن را تنظیم می‌کنیم */
+.speech-1{
+  animation-delay: 0s;
+  transform: rotate(0deg) translate(230px) rotate(0deg);
+}
+.speech-2{
+  animation-delay: -4.6s;
+  transform: rotate(120deg) translate(230px) rotate(-120deg);
+}
+.speech-3{
+  animation-delay: -9.3s;
+  transform: rotate(240deg) translate(230px) rotate(-240deg);
+}
+
+.hero-art:hover .speech{animation-play-state: paused;}
 
 /* ---------- 6. MASCOTS & EFFECTS ---------- */
 /* Every robot picture is a .moving-sticker (or .level-mascot img).
@@ -202,6 +369,7 @@ h1 em{
 .pos-cta-1{bottom:8%;left:5%;width:clamp(96px,12vw,170px)}
 .pos-cta-2{top:10%;right:5%;width:clamp(90px,10vw,140px)}
 .pos-inst-1{top:8%;left:4%}
+.pos-sup-1{top:6%;inset-inline-end:6%;width:clamp(80px,9vw,120px)}
 
 .floating-sticker{
   position:fixed;bottom:22px;left:22px;width:118px;z-index:1000;
@@ -212,7 +380,7 @@ h1 em{
 :root[data-theme="dark"] .floating-sticker{mix-blend-mode:screen;filter:drop-shadow(0 10px 15px rgba(0,0,0,.4))}
 
 .robot-head-img{
-  width:100%;max-width:340px;height:auto;border-radius:28px;object-fit:cover;
+  width:100%;max-width:500px;height:auto;border-radius:28px;object-fit:cover;
   position:relative;z-index:2;mix-blend-mode:normal;cursor:pointer;
   animation:stickerFloat 4s ease-in-out infinite;
 }
@@ -310,6 +478,14 @@ h2{font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.4;margin-bottom:14px}
   transition:transform .2s var(--ease),border-color .2s,box-shadow .2s;
 }
 .unit:hover{transform:translateY(-4px) rotate(-1.2deg);border-color:var(--lvl);box-shadow:0 6px 0 var(--lvl)}
+
+/* placeholder slots: real units are already written; these are just waiting for their content */
+.unit.unit-empty{
+  background:transparent;border:2px dashed var(--line-strong);cursor:default;
+  min-height:58px;display:flex;align-items:center;justify-content:center;
+}
+.unit.unit-empty:hover{transform:none;box-shadow:none;border-color:var(--line-strong)}
+.unit.unit-empty::after{content:"✏️";opacity:.4;font-size:18px}
 .unit b{display:block;font-size:14.5px;margin-bottom:4px}
 .unit span{font-size:13px;color:var(--muted)}
 
@@ -371,6 +547,207 @@ h2{font-size:clamp(1.9rem,3.8vw,2.7rem);line-height:1.4;margin-bottom:14px}
 .project-content h3{font-size:28px;margin-bottom:12px}
 .project-content p{color:#e4e9f7;margin-bottom:14px;font-size:14.5px}
 .tag{display:inline-block;width:fit-content;background:rgba(255,255,255,.18);padding:6px 16px;border-radius:999px;font-size:12.5px;font-weight:700;margin-bottom:16px}
+
+/* ---------- 11b. ROADMAP (winding road map) ---------- */
+.roadmap-section{
+  --rm-sky-a:#cfe0fb; --rm-sky-b:#f1f6ff; --rm-sun:#f7d56b; --rm-cloud:#ffffff;
+  --rm-road:#3d4252; --rm-road-edge:#5a6076; --rm-hill-a:#8dc063; --rm-hill-b:#4d7d64; --rm-label:#22346b;
+  --t1:var(--coral); --t2:var(--indigo); --t3:var(--sage-deep);
+  padding:80px 0 90px; position:relative; text-align:center;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .roadmap-section{
+    --rm-sky-a:#1b2030; --rm-sky-b:#2a3148; --rm-sun:#f4c95d; --rm-cloud:#3a4260;
+    --rm-road:#20232c; --rm-road-edge:#3a3e4c; --rm-hill-a:#3f6b4e; --rm-hill-b:#25402f; --rm-label:#3c5691;
+  }
+}
+:root[data-theme="dark"] .roadmap-section{
+  --rm-sky-a:#1b2030; --rm-sky-b:#2a3148; --rm-sun:#f4c95d; --rm-cloud:#3a4260;
+  --rm-road:#20232c; --rm-road-edge:#3a3e4c; --rm-hill-a:#3f6b4e; --rm-hill-b:#25402f; --rm-label:#3c5691;
+}
+.roadmap-section .wrap{text-align:center}
+.roadmap-section .lede{margin-inline:auto}
+
+/* term legend */
+.rm-legend{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}
+.rm-chip{display:inline-flex;align-items:center;gap:8px;background:var(--panel);border:2px solid var(--line-strong);border-radius:999px;padding:6px 16px;font-size:13.5px;font-weight:700}
+.rm-chip::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--tc)}
+.t1{--tc:var(--t1)} .t2{--tc:var(--t2)} .t3{--tc:var(--t3)}
+
+/* frame + scroll (phones scroll sideways instead of shrinking the map) */
+.rm-frame{max-width:1500px;margin:36px auto 0;padding-inline:20px}
+.rm-scroll{overflow-x:auto;overflow-y:hidden;border-radius:var(--radius-lg);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--marigold);-webkit-overflow-scrolling:touch}
+.rm-stage{
+  --dir:1;
+  position:relative;width:100%;min-width:1000px;aspect-ratio:1400/640;
+  container-type:inline-size;
+  background:var(--rm-sky-b); /* fallback only; the 3 worlds are painted by the svg itself */
+  text-align:start;
+}
+html[dir="rtl"] .rm-stage{--dir:-1}
+.rm-hint{display:none;margin-top:12px;font-size:13px;font-weight:600;color:var(--muted)}
+@media (max-width:1040px){.rm-hint{display:block}}
+
+/* scenery. The SVG holds only shapes (no text), so RTL simply mirrors it. */
+.rm-svg{position:absolute;inset:0;width:100%;height:100%}
+html[dir="rtl"] .rm-svg{transform:scaleX(-1)}
+.rm-sun{fill:var(--rm-sun)}
+.rm-cloud ellipse{fill:var(--rm-cloud)}
+.rm-hill .h1{fill:var(--rm-hill-a)}
+.rm-hill .h2{fill:var(--rm-hill-b);opacity:.5}
+
+/* world 2 — sea (term 2) */
+.rm-ocean{fill:url(#rmSea)}
+.rm-ocean-line{fill:none;stroke:#fff;stroke-opacity:.4;stroke-width:3}
+.rm-ocean-line.soft{stroke-opacity:.22;stroke-width:2}
+.rm-island ellipse{fill:#ecd48f}
+.rm-island rect{fill:#8a6238}
+.rm-island path{fill:#4f9d5c}
+.rm-island.small{opacity:.9}
+
+/* world 3 — space (term 3) */
+.rm-stars circle{fill:#fff;animation:rmTwinkle 3.2s ease-in-out infinite}
+.rm-stars circle:nth-child(3n){animation-delay:-1s}
+.rm-stars circle:nth-child(5n){animation-delay:-2.1s}
+.rm-planet{fill:#e08a52}
+.rm-planet-ring{fill:none;stroke:#f4c95d;stroke-width:5;opacity:.75}
+.rm-moon{fill:#dfe3ee}
+.rm-moon-crater{fill:#b9bfd0}
+@keyframes rmTwinkle{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* soft seam between the three worlds */
+.rm-zone-divider{stroke:rgba(255,255,255,.45);stroke-width:2;stroke-dasharray:5 9}
+
+.rm-road-edge{fill:none;stroke:var(--rm-road-edge);stroke-width:54}
+.rm-road{fill:none;stroke:var(--rm-road);stroke-width:46}
+.rm-road-dash{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:16 14;opacity:.8;animation:rmFlow 2.4s linear infinite}
+.rm-sea-lane{fill:none;stroke:#1c4fa0;stroke-width:30;stroke-linecap:round;opacity:.9}
+.rm-sea-dash{fill:none;stroke:#fff;stroke-width:3;stroke-dasharray:13 15;opacity:.85;animation:rmFlow 2.2s linear infinite}
+.rm-trail{fill:none;stroke:#c9b8ff;stroke-width:3;stroke-dasharray:2 11;stroke-linecap:round;opacity:.9;animation:rmFlow 2.8s linear infinite}
+@keyframes rmFlow{to{stroke-dashoffset:-60}}
+
+/* stops: each one is a zero-size anchor sitting exactly on the road */
+.rm-stop,.rm-finish,.rm-rider{position:absolute;left:calc(var(--x) * 1%);top:calc(var(--y) * 1%);width:0;height:0}
+html[dir="rtl"] .rm-stop,html[dir="rtl"] .rm-finish,html[dir="rtl"] .rm-rider{left:auto;right:calc(var(--x) * 1%)}
+
+.rm-pin{
+  --w:2.5cqw;
+  position:absolute;left:0;top:0;z-index:4;width:var(--w);height:var(--w);
+  background:var(--tc);border:.2cqw solid #fff;border-radius:50% 50% 50% 0;
+  transform:translate(-50%,-50%) translateY(calc(var(--w) * -.707)) rotate(-45deg);
+  box-shadow:0 .4cqw .8cqw rgba(0,0,0,.28);display:grid;place-items:center;
+}
+.rm-pin span{transform:rotate(45deg);color:#fff;font:800 1.15cqw/1 var(--font-display)}
+
+.rm-label{
+  position:absolute;left:0;top:0;z-index:5;white-space:nowrap;
+  transform:translate(-50%,0) translate(calc(var(--lx,0cqw) * var(--dir)),var(--ly,2.6cqw));
+  background:var(--rm-label);color:#fff;font-weight:700;font-size:1.2cqw;line-height:1.5;
+  padding:.5cqw 1.3cqw;border-radius:999px;box-shadow:0 .3cqw 0 rgba(0,0,0,.2);
+}
+
+.rm-mascot{
+  position:absolute;left:0;top:0;z-index:3;width:var(--mw,7.4cqw);height:auto;
+  transform:translate(-50%,-100%) translate(calc(var(--mx,0cqw) * var(--dir)),var(--my,-3.6cqw));
+  max-width:none;mix-blend-mode:multiply;--mo:.95;opacity:.95;
+  -webkit-user-select:none;user-select:none;pointer-events:none;
+}
+/* only zone 1 (the road world) recolours with the site's own light/dark theme;
+   zone 2 (sea) and zone 3 (space) keep a background of their own, so their mascots
+   use whichever blend mode actually matches that backdrop, regardless of site theme */
+:root[data-theme="dark"] .rm-stop.t1 .rm-mascot{mix-blend-mode:screen;--mo:.85;opacity:.85;filter:drop-shadow(0 8px 12px rgba(0,0,0,.3))}
+.rm-stop.t3 .rm-mascot{mix-blend-mode:screen;--mo:.9}
+
+/* where the mascot and label sit depends on the road shape at that stop
+   (values are for the left-to-right layout; RTL mirrors them via --dir) */
+.down{--mx:-6.5cqw;--my:7.8cqw;--lx:8cqw;--ly:-4.8cqw}
+.up{--mx:6.5cqw;--my:7.8cqw;--lx:-8cqw;--ly:-4.8cqw}
+.below{--lx:var(--mx);--ly:9.4cqw}   /* label sits right under its mascot */
+
+/* finish flag */
+.rm-flag{
+  position:absolute;left:0;top:0;width:.3cqw;height:6.5cqw;background:var(--ink);border-radius:.2cqw;
+  transform:translate(-50%,-100%);
+}
+.rm-flag::after{
+  content:"";position:absolute;top:0;inset-inline-end:.3cqw;width:3.4cqw;height:2.4cqw;
+  background:conic-gradient(#1f2430 25%,#fff 0 50%,#1f2430 0 75%,#fff 0) 0 0/1.2cqw 1.2cqw;
+  border:.15cqw solid var(--ink);
+}
+.rm-finish .rm-label{--lx:-5cqw;--ly:6.6cqw}
+
+/* entrance: everything pops in one after another when the map scrolls into view.
+   (fill-mode is "backwards" so the final state is plain CSS and hover/active can still move things) */
+.js .rm-stage .rm-pin,.js .rm-stage .rm-label,.js .rm-stage .rm-mascot,.js .rm-stage .rm-flag,.js .rm-stage .rm-rider{opacity:0}
+.js .rm-stage.visible .rm-pin,.js .rm-stage.visible .rm-label,.js .rm-stage.visible .rm-flag,.js .rm-stage.visible .rm-rider{opacity:1}
+.js .rm-stage.visible .rm-mascot{opacity:var(--mo,.95)}
+.js .rm-stage.visible .rm-pin,
+.js .rm-stage.visible .rm-label,
+.js .rm-stage.visible .rm-flag{animation:rmPop .6s var(--ease) backwards;animation-delay:calc(var(--i,10) * .13s)}
+.js .rm-stage.visible .rm-mascot{animation:rmPop .6s var(--ease) backwards,rmWobble 4.6s ease-in-out infinite;animation-delay:calc(var(--i,10) * .13s + .1s),0s}
+.rm-stop:nth-of-type(even) .rm-mascot{animation-duration:.6s,5.4s}
+@keyframes rmPop{from{opacity:0;translate:0 -1.2cqw;scale:.6}}
+@keyframes rmWobble{0%,100%{rotate:-2.5deg}50%{rotate:2.5deg}}
+@media (prefers-reduced-motion:reduce){
+  .rm-road-dash{animation:none}
+  .js .rm-stage .rm-pin,.js .rm-stage .rm-label,.js .rm-stage .rm-flag,.js .rm-stage .rm-rider{opacity:1;animation:none !important}
+  .js .rm-stage .rm-mascot{opacity:var(--mo,.95);animation:none !important}
+}
+
+
+/* ---------- roadmap: interaction ---------- */
+.rm-stop{cursor:pointer;-webkit-tap-highlight-color:transparent}
+.rm-stop:focus{outline:none}
+.rm-mascot{pointer-events:auto;cursor:pointer}
+.rm-pin,.rm-label,.rm-mascot{transition:translate .25s var(--ease),scale .25s var(--ease),background-color .2s,color .2s,box-shadow .2s}
+.rm-stop:hover .rm-pin,.rm-stop:focus-visible .rm-pin{translate:0 -.5cqw}
+.rm-stop:hover .rm-label{translate:0 -.2cqw;filter:brightness(1.15)}
+.rm-stop:hover .rm-mascot{scale:1.08}
+.rm-stop:focus-visible .rm-pin{box-shadow:0 0 0 .35cqw var(--marigold)}
+.rm-stop:focus-visible .rm-label{outline:.2cqw solid var(--marigold);outline-offset:.2cqw}
+
+/* selected stop (no z-index here: a stacking context would break the mascots' blend mode) */
+.rm-stop.active .rm-pin{scale:1.3;animation:rmRing 1.8s ease-out infinite}
+.rm-stop.active .rm-label{background:var(--marigold);color:#1f2430}
+.rm-stop.active .rm-mascot{scale:1.15}
+@keyframes rmRing{0%{box-shadow:0 0 0 0 rgba(244,165,33,.75)}80%,100%{box-shadow:0 0 0 1.4cqw rgba(244,165,33,0)}}
+
+/* the little robot that travels along the road */
+.rm-rider{z-index:7;pointer-events:none}
+.rm-rider span{
+  position:absolute;left:0;top:0;width:3.2cqw;height:3.2cqw;transform:translate(-50%,-50%);
+  display:grid;place-items:center;font-size:1.8cqw;line-height:1;
+  background:var(--marigold);border:.25cqw solid var(--ink);border-radius:50%;
+  box-shadow:0 .4cqw 0 rgba(0,0,0,.25);animation:rmBob 1.2s ease-in-out infinite;
+}
+@keyframes rmBob{50%{translate:0 -.35cqw}}
+.rm-rider.term-t2 span{background:#fff}
+.rm-rider.term-t3 span{background:#2a1854;border-color:#c9b8ff}
+.rm-rider.jump span{opacity:0;transition:opacity .2s}
+
+/* detail card under the map */
+.rm-panel{
+  margin:28px auto 0;max-width:980px;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;
+  background:var(--panel);border:3px solid var(--ink);border-radius:var(--radius-md);
+  box-shadow:6px 6px 0 var(--tc,var(--indigo));padding:20px 26px;text-align:start;
+}
+.rm-panel.swap{animation:rmSwap .35s var(--ease)}
+@keyframes rmSwap{from{opacity:0;transform:translateY(8px)}}
+.rm-panel-img{width:92px;height:auto;mix-blend-mode:multiply;-webkit-user-select:none;user-select:none}
+:root[data-theme="dark"] .rm-panel-img{mix-blend-mode:screen}
+.rm-panel-body h3{font-size:22px;margin:8px 0 4px}
+.rm-panel-body p{color:var(--muted);font-size:14.5px;margin:0;max-width:56ch}
+.rm-panel-ctrl{display:flex;flex-direction:column;align-items:center;gap:10px}
+.rm-count{font-weight:800;font-size:13px;color:var(--muted)}
+.rm-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.rm-btn{padding:8px 16px;font-size:13.5px}
+@media (max-width:760px){
+  .rm-panel{grid-template-columns:1fr;text-align:center;justify-items:center;padding:20px}
+  .rm-panel-img{width:72px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rm-rider span,.rm-stop.active .rm-pin,.rm-panel.swap{animation:none}
+}
 
 /* ---------- 12. INSTRUCTOR ---------- */
 .instructor{background:var(--panel);border-block:2px solid var(--line);position:relative}
@@ -450,7 +827,7 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
   .pos-aud-1{opacity:.95;pointer-events:auto}
   .pos-hero-1{top:auto;bottom:14px;right:5%}
   .pos-hero-2{bottom:14px;left:5%}
-  .pos-curr-1,.pos-about-1,.pos-about-2,.pos-proj-1,.pos-inst-1{display:none}   /* keep phones uncluttered */
+  .pos-curr-1,.pos-about-1,.pos-about-2,.pos-proj-1,.pos-inst-1,.pos-sup-1{display:none}   /* keep phones uncluttered */
   .floating-sticker{width:80px;bottom:14px;left:14px}
 }
 @media (max-width:760px){
@@ -468,3 +845,41 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
   .nav-cta{padding:8px 14px;font-size:13px}
   .lang-btn{padding:5px 8px}
 }
+
+/* ---------- 17. GALLERY (class photos/videos) ---------- */
+.gallery-section{background:var(--panel);border-block:2px solid var(--line);text-align:center}
+.gallery-section .kicker{display:table;margin-inline:auto}
+.gallery-section .lede{margin-inline:auto}
+.gallery{margin-top:36px;display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr;gap:18px;text-align:start}
+.slot-main{grid-row:1 / 3}
+.slot{margin:0}
+.slot-ph{
+  height:100%;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  background:var(--paper);border:3px dashed var(--line-strong);border-radius:var(--radius-md);color:var(--muted);
+  transition:transform .2s var(--ease),border-color .2s;
+}
+.slot-ph span{font-size:30px}
+.slot-ph b{font-size:14.5px;color:var(--ink)}
+.slot-ph small{font-size:12px}
+.slot:hover .slot-ph{transform:translateY(-3px);border-color:var(--marigold)}
+.gallery img,.gallery video{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);border:2px solid var(--line)}
+@media (max-width:760px){.gallery{grid-template-columns:1fr;grid-template-rows:none}.slot-main{grid-row:auto}}
+
+/* ---------- 19. SUPPORT ---------- */
+.support{position:relative;background:var(--panel);border-block:2px solid var(--line);text-align:center}
+.support .kicker{display:table;margin-inline:auto}
+.support .lede{margin-inline:auto}
+.support-grid{margin-top:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:start}
+.support-card{
+  background:var(--paper);border:2px solid var(--line);border-radius:var(--radius-md);padding:26px;
+  box-shadow:0 6px 0 var(--line);transition:transform .2s var(--ease)
+}
+.support-card:hover{transform:translateY(-4px)}
+.support-ico{width:48px;height:48px;border-radius:14px;background:var(--sage-soft);display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+.support-card h3{font-size:16px;margin-bottom:8px}
+.support-card p{font-size:14px;color:var(--muted)}
+.support-cta{margin-top:32px}
+@media (max-width:760px){.support-grid{grid-template-columns:1fr}}
+/* roadmap stop -> curriculum link */
+.rm-panel-link{margin-top:10px;font-size:13px;font-weight:700;color:var(--indigo);text-decoration:underline;background:none;border:0;padding:0;cursor:pointer;display:inline-block}
+:root[data-theme="dark"] .rm-panel-link{color:var(--marigold)}
