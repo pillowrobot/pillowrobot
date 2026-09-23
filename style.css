@@ -64,6 +64,12 @@
 /* ---------- 2. BASE ---------- */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:96px}
+/* grid/flex items default to min-width:auto (= their content's natural width), which can force
+   a track to stay wide and overflow even after a mobile rule collapses it to a single column.
+   This lets every multi-column layout actually shrink to fit small screens. */
+.hero-grid > *, .about-grid > *, .audience-box > *, .project-box > *, .instructor-grid > *,
+.support-grid > *, .gallery > *, .unit-grid > *, .contact-card > * { min-width: 0; }
+
 body{
   font-family:"Vazirmatn",sans-serif;
   background:var(--paper);
@@ -163,62 +169,6 @@ header{position:sticky;top:0;z-index:50;padding:12px 0;pointer-events:none}
 .nav-cta{--b:var(--indigo);--bd:var(--indigo-deep);--bt:#fff;padding:9px 20px;font-size:14px}
 
 
-/* استایل پایه برای منوی کشویی در موبایل */
-@media (max-width: 768px) {
-  /* پنهان کردن منو در حالت عادی روی موبایل */
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -280px; /* در حالت بسته بیرون از صفحه */
-    width: 260px;
-    height: 100vh;
-    background-color: var(--bg-color, #fff); /* هماهنگ با تم سایت */
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    padding: 80px 20px 20px 20px;
-    gap: 20px;
-    transition: right 0.3s ease-in-out;
-    z-index: 1001;
-  }
-
-  /* وقتی منو باز می‌شود (کلاس active اضافه می‌شود) */
-  .nav-links.active {
-    right: 0;
-  }
-
-  /* لایه پس‌زمینه نیمه‌شفاف هنگام باز شدن منو */
-  .menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease-in-out;
-    z-index: 1000;
-  }
-
-  .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  /* استایل دکمه همبرگری وقتی منو باز است (اختیاری برای تغییر شکل آیکون) */
-  .menu-btn[aria-expanded="true"] i:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .menu-btn[aria-expanded="true"] i:nth-child(2) {
-    opacity: 0;
-  }
-  .menu-btn[aria-expanded="true"] i:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-  }
-}
-
-
 /* ---------- 5. HERO ---------- */
 /* .hero{padding:64px 0 130px}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative}
@@ -228,34 +178,6 @@ h1 em{
   text-decoration:none var(--marigold) 3px;text-underline-offset:.2em;text-decoration-skip-ink:none;
 }
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-
-.hero-art{position:relative;width:340px;height:380px;margin:0 auto;display:grid;place-items:center}
-.hero-art::before{
-  content:"";position:absolute;inset:-34px;border:3px dashed var(--coral);border-radius:50%;
-  opacity:.45;animation:spin 50s linear infinite;
-}
-.art-blob{
-  position:absolute;width:340px;height:340px;background:var(--marigold);
-  border-radius:44% 56% 52% 48% / 48% 44% 56% 52%;
-  animation:blobMorph 9s ease-in-out infinite;
-}
-.speech{
-  position:absolute;z-index:3;padding:8px 16px;border-radius:18px;
-  background:var(--panel);color:var(--ink);border:2px solid var(--ink);
-  box-shadow:0 4px 0 var(--ink);
-  font-size:13px;font-weight:700;text-align:center;white-space:nowrap;width:max-content;
-}
-.speech-2{background:var(--indigo);color:#fff}
-.speech-3{background:var(--sage);color:#1f2430}
-.speech-1,.speech-2,.speech-3{
-  top:50%;left:50%;margin-top:-18px;margin-left:-40px;
-  animation:circleRotate 14s linear infinite;
-}
-.speech-1{animation-delay:0s}
-.speech-2{animation-delay:-4.6s}
-.speech-3{animation-delay:-9.3s}
-.hero-art:hover .speech{animation-play-state:paused}   hover to read a bubble */
-
 
 /* ---------- 5. HERO ---------- */
 .hero{padding:64px 0 130px}
@@ -742,8 +664,10 @@ html[dir="rtl"] .rm-stop,html[dir="rtl"] .rm-finish,html[dir="rtl"] .rm-rider{le
 .rm-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .rm-btn{padding:8px 16px;font-size:13.5px}
 @media (max-width:760px){
-  .rm-panel{grid-template-columns:1fr;text-align:center;justify-items:center;padding:20px}
-  .rm-panel-img{width:72px}
+  .rm-panel{display:block;text-align:center;padding:20px}
+  .rm-panel > *{margin-top:14px}
+  .rm-panel > *:first-child{margin-top:0}
+  .rm-panel-img{width:72px;margin-inline:auto}
 }
 @media (prefers-reduced-motion:reduce){
   .rm-rider span,.rm-stop.active .rm-pin,.rm-panel.swap{animation:none}
@@ -812,26 +736,47 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
 /* ---------- 16. RESPONSIVE ---------- */
 @media (max-width:900px){
   .hero{padding:36px 0 110px}
-  .hero-grid{grid-template-columns:1fr;gap:70px}
-  .hero-art{height:auto;display:flex;flex-direction:column;align-items:center}
-  .hero-art::before,.art-blob{display:none}
-  .speech-1,.speech-2,.speech-3{position:static;animation:none;transform:none;margin:0 0 10px;white-space:normal}
-  .robot-head-img{max-width:280px}
-  .about-grid,.audience-box,.project-box,.instructor-grid{grid-template-columns:1fr}
+  /* display:block instead of a collapsed 1-column grid: a grid track still sizes itself off
+     its content's natural (unwrapped) width even at min-width:0 in some engines, which pushed
+     the whole hero off-screen on phones. Plain block stacking has no such quirk. */
+  .hero-grid{display:block}
+  .hero-grid > *{margin-top:70px}
+  .hero-grid > *:first-child{margin-top:0}
+  /* on desktop the robot, blob and dashed ring are 480-540px and the speech bubbles orbit
+     around them by rotating + translating 230px from centre - all sized for a box far wider
+     than a phone screen. Mobile drops the orbit and just stacks bubbles above a small,
+     centred robot card, with the blob/ring shrunk down as a simple backdrop behind it. */
+  /* centring here uses inset + margin-inline:auto rather than left:50%/transform: the robot,
+     blob and ring each already have their own transform-based animation (a float, a wobble,
+     a spin), and a CSS animation fully replaces an element's transform while it plays - a
+     static "translateX(-50%)" for centring would just get overwritten every frame. */
+  .hero-art{width:100%;max-width:260px;height:auto;margin:0 auto;display:flex;flex-direction:column;
+    align-items:center;gap:10px;position:relative;padding-bottom:180px}
+  .hero-art::before{inset:auto;width:200px;height:200px;top:auto;bottom:0;left:0;right:0;margin-inline:auto}
+  .art-blob{position:absolute;width:170px;height:170px;top:auto;bottom:10px;left:0;right:0;margin-inline:auto}
+  .speech-1,.speech-2,.speech-3{position:static;animation:none;transform:none;margin:0;white-space:normal;max-width:220px}
+  .hero-art .robot-head-img{position:absolute;bottom:0;left:0;right:0;margin-inline:auto;max-width:170px;z-index:2}
+  .about-grid,.audience-box,.project-box,.instructor-grid{display:block}
+  .about-grid > *,.project-box > *,.instructor-grid > *{margin-top:24px}
+  .about-grid > *:first-child,.project-box > *:first-child,.instructor-grid > *:first-child{margin-top:0}
   .audience-box{padding:36px 28px}
+  .audience-box > *{margin-top:28px}
+  .audience-box > *:first-child{margin-top:0}
   .project-image{min-height:0;aspect-ratio:600/480}
   .project-content{padding:32px 28px}
   .instructor-grid .avatar{max-width:220px;margin:0 auto}
-  /* mascots become soft background decoration on small screens */
-  .moving-sticker{width:84px;opacity:.6;pointer-events:none}
-  .pos-aud-1{opacity:.95;pointer-events:auto}
+  /* decorative floating mascots are hidden by default on phones (there's no room for them
+     without overlapping real content); only a couple of spots re-enable a small one on purpose */
+  .moving-sticker{display:none}
+  .pos-hero-1,.pos-hero-2,.floating-sticker{display:block;width:84px;opacity:.6;pointer-events:none}
   .pos-hero-1{top:auto;bottom:14px;right:5%}
   .pos-hero-2{bottom:14px;left:5%}
-  .pos-curr-1,.pos-about-1,.pos-about-2,.pos-proj-1,.pos-inst-1,.pos-sup-1{display:none}   /* keep phones uncluttered */
   .floating-sticker{width:80px;bottom:14px;left:14px}
 }
 @media (max-width:760px){
-  .unit-grid{grid-template-columns:1fr}
+  .unit-grid{display:block}
+  .unit-grid > *{margin-top:14px}
+  .unit-grid > *:first-child{margin-top:0}
   .level-head{flex-wrap:wrap;padding:24px 20px}
   .level-meta{margin-inline-start:0}
   .level-body{padding-inline:20px}
@@ -863,7 +808,12 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
 .slot-ph small{font-size:12px}
 .slot:hover .slot-ph{transform:translateY(-3px);border-color:var(--marigold)}
 .gallery img,.gallery video{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-md);border:2px solid var(--line)}
-@media (max-width:760px){.gallery{grid-template-columns:1fr;grid-template-rows:none}.slot-main{grid-row:auto}}
+@media (max-width:760px){
+  .gallery{display:block}
+  .gallery > *{margin-top:18px}
+  .gallery > *:first-child{margin-top:0}
+  .slot{min-height:150px}
+}
 
 /* ---------- 19. SUPPORT ---------- */
 .support{position:relative;background:var(--panel);border-block:2px solid var(--line);text-align:center}
@@ -879,7 +829,11 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
 .support-card h3{font-size:16px;margin-bottom:8px}
 .support-card p{font-size:14px;color:var(--muted)}
 .support-cta{margin-top:32px}
-@media (max-width:760px){.support-grid{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .support-grid{display:block}
+  .support-grid > *{margin-top:18px}
+  .support-grid > *:first-child{margin-top:0}
+}
 /* roadmap stop -> curriculum link */
 .rm-panel-link{margin-top:10px;font-size:13px;font-weight:700;color:var(--indigo);text-decoration:underline;background:none;border:0;padding:0;cursor:pointer;display:inline-block}
 :root[data-theme="dark"] .rm-panel-link{color:var(--marigold)}
