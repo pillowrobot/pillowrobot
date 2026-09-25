@@ -673,6 +673,23 @@ html[dir="rtl"] .rm-stop,html[dir="rtl"] .rm-finish,html[dir="rtl"] .rm-rider{le
   .rm-rider span,.rm-stop.active .rm-pin,.rm-panel.swap{animation:none}
 }
 
+/* ---------- 12. INSTRUCTOR ----------
+.instructor{background:var(--panel);border-block:2px solid var(--line);position:relative}
+.instructor-grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:44px;align-items:center;margin-top:36px}
+.avatar{
+  width:100%;aspect-ratio:1/1;border-radius:var(--radius-lg);background:var(--indigo);
+  border:4px solid var(--ink);box-shadow:8px 8px 0 var(--marigold);
+  display:grid;place-items:center;font-size:64px;color:var(--paper);
+  transition:transform .3s var(--ease);
+}
+.avatar:hover{transform:rotate(-3deg) scale(1.03)}
+.instructor-bio p{color:var(--muted);font-size:15px;margin-bottom:14px;max-width:620px}
+.instructor-name{font-size:24px;font-weight:800;margin-bottom:4px}
+.instructor-role{color:var(--coral-deep);font-weight:700;font-size:14.5px;margin-bottom:18px}
+:root[data-theme="dark"] .instructor-role{color:var(--coral)}
+.cred-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.cred-chip{background:var(--indigo-soft);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:700;transition:transform .2s var(--ease)}
+.cred-chip:hover{transform:translateY(-3px) rotate(-2deg)} */
 /* ---------- 12. INSTRUCTOR ---------- */
 .instructor{background:var(--panel);border-block:2px solid var(--line);position:relative}
 .instructor-grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:44px;align-items:center;margin-top:36px}
@@ -683,6 +700,7 @@ html[dir="rtl"] .rm-stop,html[dir="rtl"] .rm-finish,html[dir="rtl"] .rm-rider{le
   transition:transform .3s var(--ease);
 }
 .avatar:hover{transform:rotate(-3deg) scale(1.03)}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:calc(var(--radius-lg) - 4px)}
 .instructor-bio p{color:var(--muted);font-size:15px;margin-bottom:14px;max-width:620px}
 .instructor-name{font-size:24px;font-weight:800;margin-bottom:4px}
 .instructor-role{color:var(--coral-deep);font-weight:700;font-size:14.5px;margin-bottom:18px}
