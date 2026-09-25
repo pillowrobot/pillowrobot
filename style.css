@@ -791,6 +791,9 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
   .lang-btn{padding:5px 8px}
 }
 
+/* جایگزین ساده‌ی بخش گالری (کامنت‌شده): یه خط ظریف که بخش پروژه رو از بخش مخاطب جدا نگه می‌داره */
+.section-divider{max-width:1100px;margin:56px auto;border-top:2px dashed var(--line);opacity:.6}
+
 /* ---------- 17. GALLERY (class photos/videos) ---------- */
 .gallery-section{background:var(--panel);border-block:2px solid var(--line);text-align:center}
 .gallery-section .kicker{display:table;margin-inline:auto}
