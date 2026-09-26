@@ -139,6 +139,9 @@ header{position:sticky;top:0;z-index:50;padding:12px 0;pointer-events:none}
 .nav.menu-open .menu-btn i:nth-child(1){transform:translateY(5px) rotate(45deg)}
 .nav.menu-open .menu-btn i:nth-child(2){opacity:0}
 .nav.menu-open .menu-btn i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+/* nav-quick: the 2 links kept visible on mobile instead of being hidden behind the menu.
+   Hidden on desktop because .nav-links already shows every link there. */
+.nav-quick{display:none}
 @media (max-width:1080px){
   .nav-links{
     display:flex;position:absolute;top:calc(100% + 10px);inset-inline:14px;flex-direction:column;gap:2px;
@@ -148,7 +151,18 @@ header{position:sticky;top:0;z-index:50;padding:12px 0;pointer-events:none}
   }
   .nav-links a{padding:10px 14px;text-align:center}
   .nav.menu-open .nav-links{opacity:1;visibility:visible;translate:0 0}
-  .menu-btn{display:grid}
+  /* the logo now opens/closes this menu, so the separate hamburger button is no longer needed */
+  .menu-btn{display:none}
+  /* برنامه دوره (2nd link) و درباره من (5th link) توی نوار همیشه دیده می‌شن، پس نسخه‌شون
+     داخل پنل کشویی تکراریه و مخفی می‌مونه؛ بقیه (درباره دوره، نمونه پروژه، پشتیبانی) همونجا می‌مونن. */
+  .nav-links a:nth-child(2),
+  .nav-links a:nth-child(5){display:none}
+  .nav-quick{
+    display:flex;gap:2px;font-size:12.5px;font-weight:700;color:var(--muted);white-space:nowrap;
+  }
+  .nav-quick a{padding:6px 9px;border-radius:999px;transition:background-color .2s,color .2s}
+  .nav-quick a:hover{background:var(--marigold-soft);color:var(--ink)}
+  .brand{cursor:pointer}
 }
 
 /* ---------- 4. BUTTONS (chunky, press-down) ---------- */
@@ -773,6 +787,7 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
   .hero-art::before{inset:auto;width:200px;height:200px;top:auto;bottom:0;left:0;right:0;margin-inline:auto}
   .art-blob{position:absolute;width:170px;height:170px;top:auto;bottom:10px;left:0;right:0;margin-inline:auto}
   .speech-1,.speech-2,.speech-3{position:static;animation:none;transform:none;margin:0;white-space:normal;max-width:220px}
+  .speech-2,.speech-3{display:none}
   .hero-art .robot-head-img{position:absolute;bottom:0;left:0;right:0;margin-inline:auto;max-width:170px;z-index:2}
   .about-grid,.audience-box,.project-box,.instructor-grid{display:block}
   .about-grid > *,.project-box > *,.instructor-grid > *{margin-top:24px}
@@ -803,10 +818,12 @@ footer{border-top:2px dashed var(--line);padding:28px 0;color:var(--muted);font-
 }
 @media (max-width:520px){
   .brand{font-size:0;gap:0}         /* keep the logo mark, hide the name on tiny screens */
-  .nav{gap:8px;padding-inline:10px}
+  .nav{gap:6px;padding-inline:10px}
   .nav-right,.switcher{gap:6px}
   .nav-cta{padding:8px 14px;font-size:13px}
   .lang-btn{padding:5px 8px}
+  .nav-quick{font-size:11.5px;gap:0}
+  .nav-quick a{padding:6px 7px}
 }
 
 /* جایگزین ساده‌ی بخش گالری (کامنت‌شده): یه خط ظریف که بخش پروژه رو از بخش مخاطب جدا نگه می‌داره */

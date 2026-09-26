@@ -473,14 +473,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- mobile menu ---------- */
-  var menuBtn = document.getElementById('menuBtn'), navEl = document.querySelector('.nav');
+  var menuBtn = document.getElementById('menuBtn'), navEl = document.querySelector('.nav'), brandLink = document.querySelector('.brand');
+  function openMenu(open){
+    navEl.classList.toggle('menu-open', open);
+    if(menuBtn) menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
   if(menuBtn && navEl){
-    menuBtn.addEventListener('click', function(){
-      var open = navEl.classList.toggle('menu-open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    menuBtn.addEventListener('click', function(){ openMenu(!navEl.classList.contains('menu-open')); });
     navEl.querySelectorAll('.nav-links a').forEach(function(a){
-      a.addEventListener('click', function(){ navEl.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded','false'); });
+      a.addEventListener('click', function(){ openMenu(false); });
+    });
+  }
+  /* below 1080px the hamburger button is hidden and the logo opens the menu instead;
+     above that the logo keeps its normal job of linking home */
+  if(brandLink && navEl){
+    brandLink.addEventListener('click', function(e){
+      if(window.innerWidth > 1080) return;
+      e.preventDefault();
+      openMenu(!navEl.classList.contains('menu-open'));
     });
   }
 
